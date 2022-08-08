@@ -1,12 +1,17 @@
 import React from 'react';
+import EmptyRow from './EmptyRow';
 
 const Gameboard = () => {
-    const ROWS:number = 6;
-    const COLS:number = 5;
+    const rows = new Array(6);
 
     return (
-        <div>
-            <h1>Hello</h1>
+        <div className="gameboard">
+            <EmptyRow />
+            <EmptyRow />
+            <EmptyRow />
+            <EmptyRow />
+            <EmptyRow />
+            <EmptyRow />
         </div>
     );
 };

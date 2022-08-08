@@ -40,6 +40,7 @@
     background-color: black;
     padding: 1em;
     gap: .5em;
+    height: 100%;
 }
 
 .keyboard-line {
@@ -63,4 +64,32 @@
 .icons {
     display: flex;
     gap: .5em;
+}
+
+/* Gameboard */
+.gameboard {
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.board-row {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-square {
+    background-color: var(--key-color-absent);
+    padding: 1rem;
+    cursor: pointer;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1em;
+    font-size: 1em;
+    height: 1.85em;
+    width: 1.85em;
 }
