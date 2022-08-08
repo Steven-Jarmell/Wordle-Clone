@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --key-color-present: #818384;
+    --key-color-absent: #3a3a3c;
+    --key-color-yellow: #b59f3b;
+    --key-color-green: #538d4e;
+}
+
+/* Button */
+
+.letter {
+    background-color: var(--key-color-present);
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.backspace {
+    font-size: 30px;
+    padding: .25em;
+}
+
+/* Keyboard */
+
+.keyboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 1em;
+    gap: .5em;
+}
+
+.keyboard-line {
+    display: flex;
+    gap: .5em;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw;
+    border-bottom: 1px solid #3a3a3c;
+    font-family: 'Roboto', sans-serif;
+}
+
+.icons {
+    display: flex;
+    gap: .5em;
+}
