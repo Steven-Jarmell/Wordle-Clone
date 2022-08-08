@@ -2,7 +2,6 @@ import React from 'react';
 import EmptyRow from './EmptyRow';
 
 const Gameboard = () => {
-    const rows = new Array(6);
 
     return (
         <div className="gameboard">

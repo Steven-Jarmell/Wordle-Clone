@@ -3,6 +3,7 @@ import './App.css';
 import Gameboard from './Components/Gameboard';
 import Keyboard from './Components/Keyboard';
 import Navbar from './Components/Navbar';
+import { randomWord } from './Components/GenerateRandomWord';
 
 function App() {
   return (
