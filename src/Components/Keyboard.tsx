@@ -3,56 +3,56 @@ import Button from "./KeyboardBlock";
 import "./styles.css";
 
 type Props = {
-	onChar: (value: string) => void;
+	addChar: (value: string) => void;
+	deleteChar: () => void;
+	enterWord: () => void;
 };
 
-const Keyboard = ({ onChar }: Props) => {
+const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 	const line1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 	const line2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 	const line3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
 	const onClick = (value: string) => {
-		onChar(value);
+		addChar(value);
 	};
 
 	useEffect(() => {
 		const listener = (e: KeyboardEvent) => {
 			const key = e.key;
-			/*
-			if (key.length === 1 && key >= "A" && key <= "Z") {
-				console.log("calling onChar");
-                onChar(key);
+			if (key === "Backspace") {
+				deleteChar();
+			} else if (key === "Enter") {
+				enterWord();
+			} else {
+				addChar(key);
 			}
-            */
-            console.log("calling onChar");
-            onChar(key);
 		};
 
-        window.addEventListener('keyup', listener);
-        return () => {
-            window.removeEventListener('keyup', listener);
-        }
-
-	}, [onChar]);
+		window.addEventListener("keyup", listener);
+		return () => {
+			window.removeEventListener("keyup", listener);
+		};
+	}, [addChar, deleteChar, enterWord]);
 
 	return (
 		<div className="keyboard-container">
 			<div className="keyboard-line">
 				{line1.map((key, i) => (
-					<Button key={i} letter={key} onClick={onClick}/>
+					<Button key={i} letter={key} onClick={onClick} />
 				))}
 			</div>
 			<div className="keyboard-line">
 				{line2.map((key, i) => (
-					<Button key={i} letter={key} onClick={onClick}/>
+					<Button key={i} letter={key} onClick={onClick} />
 				))}
 			</div>
 			<div className="keyboard-line">
-				<Button letter={"ENTER"} onClick={onClick}/>
+				<Button letter={"ENTER"} onClick={onClick} />
 				{line3.map((key, i) => (
 					<Button key={i} letter={key} onClick={onClick} />
 				))}
-				<Button letter={"BACK"} onClick={onClick}/>
+				<Button letter={"BACK"} onClick={onClick} />
 			</div>
 		</div>
 	);
