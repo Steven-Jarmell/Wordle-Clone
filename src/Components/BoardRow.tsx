@@ -1,7 +1,12 @@
 import BoardSquare from "./BoardSquare";
 
-const EmptyRow = () => {
-    const emptyCells = [" ", " ", " ", " ", " "];
+type Props = {
+    solution: string;
+    guess: string;
+}
+
+const BoardRow = ({solution, guess}: Props) => {
+    const emptyCells = [''];
     return (
         <div className="board-row">
             {emptyCells.map((c) => (
@@ -11,4 +16,4 @@ const EmptyRow = () => {
     );
 };
 
-export default EmptyRow;
+export default BoardRow;

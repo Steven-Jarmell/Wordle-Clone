@@ -1,8 +1,11 @@
-import React from "react";
 import Button from "./KeyboardBlock";
 import './styles.css';
 
-const Keyboard = () => {
+type Props = {
+    onChar: (value: string) => void;
+}
+
+const Keyboard = ({onChar}: Props) => {
 	const line1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
 	const line2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 	const line3 = ["Z", "X", "C", "V", "B", "N", "M"];

@@ -1,16 +1,24 @@
 import React from 'react';
-import EmptyRow from './EmptyRow';
+import BoardRow from './BoardRow';
 
-const Gameboard = () => {
+type Props = {
+    solution: string;
+    currentGuess: string;
+    guesses: string[];
+}
+
+const Gameboard = ({solution, currentGuess, guesses}:Props) => {
 
     return (
         <div className="gameboard">
-            <EmptyRow />
-            <EmptyRow />
-            <EmptyRow />
-            <EmptyRow />
-            <EmptyRow />
-            <EmptyRow />
+            {guesses.map((guess, i) => (
+                <BoardRow 
+                    key={i}
+                    solution={solution}
+                    guess={guess}
+                />
+            ))}
+
         </div>
     );
 };
