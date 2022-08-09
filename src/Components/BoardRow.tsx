@@ -6,11 +6,14 @@ type Props = {
 }
 
 const BoardRow = ({solution, guess}: Props) => {
-    const emptyCells = [''];
+    const cells = (guess === '') ? ['', '', '', '', ''] : guess.split('');
+    while (cells.length !== 5) {
+        cells.push('');
+    }
     return (
         <div className="board-row">
-            {emptyCells.map((c) => (
-                <BoardSquare letter={c}/>
+            {cells.map((c, i) => (
+                <BoardSquare key={i} letter={c}/>
             ))}
         </div>
     );

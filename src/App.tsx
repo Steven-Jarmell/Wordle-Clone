@@ -7,11 +7,12 @@ import { randomWord } from "./Components/GenerateRandomWord";
 
 const App: React.FC = () => {
 	const [currentGuess, setCurrentGuess] = useState<string>("");
-  const [guesses, setGuesses] = useState<string[]>([]);
+	const [guesses, setGuesses] = useState<string[]>(['', '','','','','']);
 
-  const onChar = (value: string) => {
-    setCurrentGuess(`${currentGuess}${value}`);
-  }
+	const onChar = (value: string) => {
+		setCurrentGuess(`${currentGuess}${value}`);
+		console.log(currentGuess);
+	};
 
 	return (
 		<div className="App">
@@ -21,7 +22,7 @@ const App: React.FC = () => {
 				currentGuess={currentGuess}
 				guesses={guesses}
 			/>
-			<Keyboard onChar={onChar}/>
+			<Keyboard onChar={onChar} />
 		</div>
 	);
 };

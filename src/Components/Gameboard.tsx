@@ -8,9 +8,9 @@ type Props = {
 }
 
 const Gameboard = ({solution, currentGuess, guesses}:Props) => {
-
     return (
         <div className="gameboard">
+            <BoardRow solution={solution} guess={currentGuess} />
             {guesses.map((guess, i) => (
                 <BoardRow 
                     key={i}
