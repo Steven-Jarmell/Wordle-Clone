@@ -89,7 +89,10 @@
 	color: white;
 	font-family: "Roboto", sans-serif;
 	line-height: 1em;
-	font-size: 1em;
-	height: 1.85em;
-	width: 1.85em;
+	height: 1em;
+    width: 1em;
+	font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

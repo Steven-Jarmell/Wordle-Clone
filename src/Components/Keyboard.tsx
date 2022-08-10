@@ -19,13 +19,13 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 
 	useEffect(() => {
 		const listener = (e: KeyboardEvent) => {
-			const key = e.key;
+			let key:string = e.key;
 			if (key === "Backspace") {
 				deleteChar();
 			} else if (key === "Enter") {
 				enterWord();
 			} else {
-				addChar(key);
+				addChar(key.toUpperCase());
 			}
 		};
 
