@@ -5,6 +5,6 @@ function randomIntFromInterval(min: number, max: number) {
 }
 
 let index: number = randomIntFromInterval(0, WORDS.length);
-let randomWord: string = WORDS[index];
+let randomWord: string = WORDS[index].toUpperCase();
 
 export { randomWord };

@@ -7,18 +7,14 @@ type Props = {
 };
 
 const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
-	/*
-    const myClonedArray = [];
-    guesses.forEach(val => myClonedArray.push(Object.assign({}, val)));
-    while (myClonedArray.length < 5) {
-        myClonedArray.push('');
-    }
-    */
-	const remainingGuesses = 6 - guesses.length - 1;
-	const emptyRows = [];
+	
+	const remainingGuesses = 5 - guesses.length;
+	let emptyRows = [];
+	//alert(remainingGuesses);
 	for (let i = 0; i < remainingGuesses; i++) {
 		emptyRows.push("");
 	}
+
 
 	return (
 		<div className="gameboard">

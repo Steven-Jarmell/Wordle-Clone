@@ -8,24 +8,48 @@ import { randomWord } from "./Components/GenerateRandomWord";
 const App: React.FC = () => {
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [guesses, setGuesses] = useState<string[]>([]);
+	const [gameOver, setGameOver] = useState<boolean>(false);
 
 	const addChar = (value: string) => {
+		if (gameOver) return;
 		if (currentGuess.length === 5) return;
 		setCurrentGuess(`${currentGuess}${value}`);
 		console.log(currentGuess);
 	};
 
 	const deleteChar = () => {
+		if (gameOver) return;
 		setCurrentGuess(currentGuess.slice(0, -1));
 	};
 
 	const enterWord = () => {
+		if (gameOver) return;
 		if (currentGuess.length < 5) return;
-		if (guesses.length < 5) {
+		if (guesses.length <= 4) {
 			setGuesses([...guesses, currentGuess]);
+			if (currentGuess === randomWord) {
+				alert("Correct");
+				endGame();
+			}
+			else {
+				alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
+			}
 			setCurrentGuess("");
 		}
+		else if (guesses.length === 5) {
+			if (currentGuess === randomWord) {
+				alert("Correct");
+				endGame();
+			}
+			else {
+				alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
+			}
+		}
 	};
+
+	const endGame = () => {
+		setGameOver(true);
+	}
 
 	return (
 		<div className="App">
