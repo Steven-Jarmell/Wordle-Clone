@@ -4,6 +4,7 @@ import Gameboard from "./Components/Gameboard";
 import Keyboard from "./Components/Keyboard";
 import Navbar from "./Components/Navbar";
 import { randomWord } from "./Components/GenerateRandomWord";
+import { WORDS } from "./Components/WordList";
 
 const App: React.FC = () => {
 	const [currentGuess, setCurrentGuess] = useState<string>("");
@@ -24,8 +25,13 @@ const App: React.FC = () => {
 
 	const enterWord = () => {
 		if (gameOver) return;
-		if (currentGuess.length < 5) return;
+		else if (currentGuess.length < 5) return;
+		else if (!WORDS.includes(currentGuess.toLowerCase())) {
+			alert("Invalid word");	
+			return;
+		}
 		if (guesses.length <= 4) {
+			// Call method to check last row
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
 				alert("Correct");

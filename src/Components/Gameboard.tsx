@@ -20,13 +20,13 @@ const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
 		<div className="gameboard">
 			{/* Insert guess rows */}
 			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} />
+				<BoardRow key={i} solution={solution} guess={guess} showColor={true}/>
 			))}
 
-			<BoardRow solution={solution} guess={currentGuess} />
+			<BoardRow solution={solution} guess={currentGuess} showColor={false}/>
 
 			{emptyRows.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} />
+				<BoardRow key={i} solution={solution} guess={guess} showColor={false}/>
 			))}
 		</div>
 	);

@@ -107,3 +107,11 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.valid-letter {
+	background-color: var(--key-color-yellow);
+}
+
+.correct-letter-space {
+	background-color: var(--key-color-green);
+}

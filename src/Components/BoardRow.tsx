@@ -3,9 +3,10 @@ import BoardSquare from "./BoardSquare";
 type Props = {
 	solution: string;
 	guess: string;
+	showColor: boolean;
 };
 
-const BoardRow = ({ solution, guess }: Props) => {
+const BoardRow = ({ solution, guess, showColor }: Props) => {
 	const cells = guess === "" ? ["", "", "", "", ""] : guess.split("");
 	while (cells.length < 5) {
 		cells.push("");
@@ -13,7 +14,7 @@ const BoardRow = ({ solution, guess }: Props) => {
 	return (
 		<div className="board-row">
 			{cells.map((c, i) => (
-				<BoardSquare key={i} letter={c} />
+				<BoardSquare key={i} listID ={i} letter={c} solution={solution} showColor={showColor}/>
 			))}
 		</div>
 	);
