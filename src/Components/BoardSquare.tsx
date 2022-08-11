@@ -5,7 +5,7 @@ type Props = {
 };
 
 const BoardSquare = ({ letter }: Props) => {
-	return <p className="board-square">{letter}</p>;
+	return <p className="board-square noselect">{letter}</p>;
 };
 
 export default BoardSquare;

@@ -13,10 +13,6 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 	const line2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 	const line3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
-	const onClick = (value: string) => {
-		addChar(value);
-	};
-
 	useEffect(() => {
 		const listener = (e: KeyboardEvent) => {
 			let key:string = e.key;
@@ -39,20 +35,20 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 		<div className="keyboard-container">
 			<div className="keyboard-line">
 				{line1.map((key, i) => (
-					<Button key={i} letter={key} onClick={onClick} />
+					<Button key={i} letter={key} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
 				))}
 			</div>
 			<div className="keyboard-line">
 				{line2.map((key, i) => (
-					<Button key={i} letter={key} onClick={onClick} />
+					<Button key={i} letter={key} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
 				))}
 			</div>
 			<div className="keyboard-line">
-				<Button letter={"ENTER"} onClick={onClick} />
+				<Button letter={"Enter"} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
 				{line3.map((key, i) => (
-					<Button key={i} letter={key} onClick={onClick} />
+					<Button key={i} letter={key} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
 				))}
-				<Button letter={"BACK"} onClick={onClick} />
+				<Button letter={"Back"} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
 			</div>
 		</div>
 	);
