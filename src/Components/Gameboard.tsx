@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
-	
 	const remainingGuesses = 5 - guesses.length;
 	let emptyRows = [];
 	//alert(remainingGuesses);
@@ -16,25 +15,25 @@ const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
 	}
 
 	let showRow = () => {
-		return (guesses.length <= 5);
-	}
+		return guesses.length <= 5;
+	};
 
 	return showRow() ? (
 		<div className="gameboard">
 			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={true}/>
+				<BoardRow key={i} solution={solution} guess={guess} showColor={true} />
 			))}
 
-			<BoardRow solution={solution} guess={currentGuess} showColor={false}/>
+			<BoardRow solution={solution} guess={currentGuess} showColor={false} />
 
 			{emptyRows.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={false}/>
+				<BoardRow key={i} solution={solution} guess={guess} showColor={false} />
 			))}
 		</div>
 	) : (
 		<div className="gameboard">
 			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={true}/>
+				<BoardRow key={i} solution={solution} guess={guess} showColor={true} />
 			))}
 		</div>
 	);

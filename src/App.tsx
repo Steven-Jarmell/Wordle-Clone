@@ -29,7 +29,7 @@ const App: React.FC = () => {
 		if (gameOver) return;
 		else if (currentGuess.length < 5) return;
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
-			alert("Invalid word");	
+			alert("Invalid word");
 			return;
 		}
 		if (guesses.length <= 4) {
@@ -40,20 +40,17 @@ const App: React.FC = () => {
 			if (currentGuess === randomWord) {
 				alert("Correct");
 				endGame();
-			}
-			else {
+			} else {
 				//alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
 			}
 			setCurrentGuess("");
-		}
-		else if (guesses.length === 5) {
+		} else if (guesses.length === 5) {
 			setGuesses([...guesses, currentGuess]);
 			setShowColor(true);
 			if (currentGuess === randomWord) {
 				alert("Correct");
 				endGame();
-			}
-			else {
+			} else {
 				alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
 			}
 		}
@@ -61,7 +58,7 @@ const App: React.FC = () => {
 
 	const endGame = () => {
 		setGameOver(true);
-	}
+	};
 
 	return (
 		<div className="App">
