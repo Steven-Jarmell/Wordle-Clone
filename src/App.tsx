@@ -10,6 +10,7 @@ const App: React.FC = () => {
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [gameOver, setGameOver] = useState<boolean>(false);
+	const [showColor, setShowColor] = useState<boolean>(false);
 
 	const addChar = (value: string) => {
 		if (gameOver) return;
@@ -30,7 +31,9 @@ const App: React.FC = () => {
 			alert("Invalid word");	
 			return;
 		}
-		if (guesses.length <= 5) {
+		if (guesses.length <= 4) {
+			setShowColor(true);
+			console.log(guesses.length);
 			// Call method to check last row
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
@@ -38,11 +41,13 @@ const App: React.FC = () => {
 				endGame();
 			}
 			else {
-				alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
+				//alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
 			}
 			setCurrentGuess("");
 		}
 		else if (guesses.length === 5) {
+			setGuesses([...guesses, currentGuess]);
+			setShowColor(true);
 			if (currentGuess === randomWord) {
 				alert("Correct");
 				endGame();
@@ -69,6 +74,9 @@ const App: React.FC = () => {
 				addChar={addChar}
 				deleteChar={deleteChar}
 				enterWord={enterWord}
+				solution={randomWord}
+				guesses={guesses}
+				showColor={showColor}
 			/>
 		</div>
 	);

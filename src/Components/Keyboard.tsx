@@ -6,6 +6,9 @@ type Props = {
 	addChar: (value: string) => void;
 	deleteChar: () => void;
 	enterWord: () => void;
+	solution: string;
+	guesses: string[];
+	showColor: boolean;
 };
 
 const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
@@ -15,7 +18,7 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 
 	useEffect(() => {
 		const listener = (e: KeyboardEvent) => {
-			let key:string = e.key;
+			let key: string = e.key;
 			if (key === "Backspace") {
 				deleteChar();
 			} else if (key === "Enter") {
@@ -35,20 +38,48 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 		<div className="keyboard-container">
 			<div className="keyboard-line">
 				{line1.map((key, i) => (
-					<Button key={i} letter={key} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
+					<Button
+						key={i}
+						letter={key}
+						addChar={addChar}
+						deleteChar={deleteChar}
+						enterWord={enterWord}
+					/>
 				))}
 			</div>
 			<div className="keyboard-line">
 				{line2.map((key, i) => (
-					<Button key={i} letter={key} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
+					<Button
+						key={i}
+						letter={key}
+						addChar={addChar}
+						deleteChar={deleteChar}
+						enterWord={enterWord}
+					/>
 				))}
 			</div>
 			<div className="keyboard-line">
-				<Button letter={"Enter"} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
+				<Button
+					letter={"Enter"}
+					addChar={addChar}
+					deleteChar={deleteChar}
+					enterWord={enterWord}
+				/>
 				{line3.map((key, i) => (
-					<Button key={i} letter={key} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
+					<Button
+						key={i}
+						letter={key}
+						addChar={addChar}
+						deleteChar={deleteChar}
+						enterWord={enterWord}
+					/>
 				))}
-				<Button letter={"Back"} addChar={addChar} deleteChar={deleteChar} enterWord={enterWord} />
+				<Button
+					letter={"Back"}
+					addChar={addChar}
+					deleteChar={deleteChar}
+					enterWord={enterWord}
+				/>
 			</div>
 		</div>
 	);

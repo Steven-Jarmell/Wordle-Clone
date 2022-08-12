@@ -8,6 +8,10 @@ type Props = {
 	guess: string;
 };
 
+let correctArray:string[] = [];
+let validArray:string[] = [];
+let invalidArray:string[] = [];
+
 const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 	let solutionArray = solution.split("");
 	let guessArray = guess.split("");
@@ -40,6 +44,14 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 		return guessCount > solutionCount;
 	}
 
+	if (checkIfCorrect() && showColor) {
+		correctArray.push(letter);
+	} else if (checkIfValid() && showColor) {
+		validArray.push(letter);
+	} else if (showColor) {
+		invalidArray.push(letter);
+	}
+
 	return checkIfCorrect() && showColor ? (
 		<p className="board-square noselect correct-letter-space">{letter}</p>
 	) : checkIfValid() && !(guessHasMoreThanOneButSolutionHasOne()) && showColor ? (
@@ -50,3 +62,4 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 };
 
 export default BoardSquare;
+export { correctArray, validArray, invalidArray };

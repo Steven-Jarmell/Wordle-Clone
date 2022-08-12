@@ -16,12 +16,11 @@ const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
 	}
 
 	let showRow = () => {
-		return (guesses.length < 6);
+		return (guesses.length <= 5);
 	}
 
 	return showRow() ? (
 		<div className="gameboard">
-			
 			{guesses.map((guess, i) => (
 				<BoardRow key={i} solution={solution} guess={guess} showColor={true}/>
 			))}

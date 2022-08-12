@@ -115,3 +115,7 @@
 .correct-letter-space {
 	background-color: var(--key-color-green);
 }
+
+.invalid-letter {
+	background-color: var(--key-color-absent);
+}
