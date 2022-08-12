@@ -14,7 +14,7 @@ const BoardRow = ({ solution, guess, showColor }: Props) => {
 	return (
 		<div className="board-row">
 			{cells.map((c, i) => (
-				<BoardSquare key={i} listID ={i} letter={c} solution={solution} showColor={showColor}/>
+				<BoardSquare key={i} listID ={i} letter={c} solution={solution} showColor={showColor} guess={guess}/>
 			))}
 		</div>
 	);
