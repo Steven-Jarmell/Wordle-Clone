@@ -15,6 +15,7 @@ const App: React.FC = () => {
 	const addChar = (value: string) => {
 		if (gameOver) return;
 		if (currentGuess.length === 5) return;
+		if (/^[a-zA-Z]+$/.test(value) === false) return;
 		setCurrentGuess(`${currentGuess}${value}`);
 		console.log(currentGuess);
 	};
