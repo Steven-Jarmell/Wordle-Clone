@@ -30,7 +30,7 @@ const App: React.FC = () => {
 			alert("Invalid word");	
 			return;
 		}
-		if (guesses.length <= 4) {
+		if (guesses.length <= 5) {
 			// Call method to check last row
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {

@@ -15,10 +15,13 @@ const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
 		emptyRows.push("");
 	}
 
+	let showRow = () => {
+		return (guesses.length < 6);
+	}
 
-	return (
+	return showRow() ? (
 		<div className="gameboard">
-			{/* Insert guess rows */}
+			
 			{guesses.map((guess, i) => (
 				<BoardRow key={i} solution={solution} guess={guess} showColor={true}/>
 			))}
@@ -27,6 +30,12 @@ const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
 
 			{emptyRows.map((guess, i) => (
 				<BoardRow key={i} solution={solution} guess={guess} showColor={false}/>
+			))}
+		</div>
+	) : (
+		<div className="gameboard">
+			{guesses.map((guess, i) => (
+				<BoardRow key={i} solution={solution} guess={guess} showColor={true}/>
 			))}
 		</div>
 	);
