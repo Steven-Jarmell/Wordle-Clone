@@ -7,55 +7,84 @@ import { randomWord } from "./Components/GenerateRandomWord";
 import { WORDS } from "./Components/WordList";
 
 const App: React.FC = () => {
+	// Initialize state variables/methods
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [gameOver, setGameOver] = useState<boolean>(false);
 	const [showColor, setShowColor] = useState<boolean>(false);
 
+	/**
+	 * Add a char to the current guess
+	 * @param value:string character to add
+	 * @returns none
+	 */
 	const addChar = (value: string) => {
-		if (gameOver) return;
-		if (currentGuess.length === 5) return;
-		if (/^[a-zA-Z]+$/.test(value) === false) return;
+		// If the game is over, the current guess is already 5 characters, or the player did not enter a valid letter, do not add to currentGuess
+		if (
+			gameOver ||
+			currentGuess.length === 5 ||
+			/^[a-zA-Z]+$/.test(value) === false
+		) {
+			return;
+		}
 		setCurrentGuess(`${currentGuess}${value}`);
-		console.log(currentGuess);
 	};
 
+	/**
+	 * Deletes the last char in the current guess
+	 * @returns none
+	 */
 	const deleteChar = () => {
-		if (gameOver) return;
+		// If the game is over, do not remove the current char
+		if (gameOver) {
+			return;
+		}
 		setCurrentGuess(currentGuess.slice(0, -1));
 	};
 
+	/**
+	 * If the player entered a valid word, check if it is correct
+	 * If it is correct, let the user know and end the game
+	 * If the player runs out of guesses, end the game
+	 * @returns none
+	 */
 	const enterWord = () => {
-		if (gameOver) return;
-		else if (currentGuess.length < 5) return;
+		// If the game is over or if the current guess is not 5 characters, do not allow enter to run
+		if (gameOver || currentGuess.length < 5) {
+			return;
+		}
+		// If the word entered is not valid, return
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
 			alert("Invalid word");
 			return;
 		}
+		// If we are not on the last guess, show the colors, add the guess to the list of guesses
+		// If the guess is correct, let the player know and end the game
 		if (guesses.length <= 4) {
 			setShowColor(true);
-			console.log(guesses.length);
-			// Call method to check last row
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
 				alert("Correct");
 				endGame();
-			} else {
-				//alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
 			}
 			setCurrentGuess("");
+			// If we are on the last guess, add the guess to the list of guesses and show the colors
+			// If the last guess was correct, let the player know they won, else let them know they lost and what the actual word was
 		} else if (guesses.length === 5) {
 			setGuesses([...guesses, currentGuess]);
 			setShowColor(true);
 			if (currentGuess === randomWord) {
 				alert("Correct");
-				endGame();
 			} else {
 				alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
 			}
+			endGame();
 		}
 	};
 
+	/**
+	 * Function to set the game state to over
+	 */
 	const endGame = () => {
 		setGameOver(true);
 	};

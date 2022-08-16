@@ -16,6 +16,7 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 	const line2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 	const line3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
+	// Hook to listen for keyboard inputs and then add/delete/enter depending on the input
 	useEffect(() => {
 		const listener = (e: KeyboardEvent) => {
 			let key: string = e.key;
@@ -34,6 +35,7 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 		};
 	}, [addChar, deleteChar, enterWord]);
 
+	//Generate keyboard display for each row
 	return (
 		<div className="keyboard-container">
 			<div className="keyboard-line">
