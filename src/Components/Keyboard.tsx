@@ -62,7 +62,7 @@ const Keyboard = ({ addChar, deleteChar, enterWord }: Props) => {
 			</div>
 			<div className="keyboard-line">
 				<Button
-					letter={"Enter"}
+					letter={"ENTER"}
 					addChar={addChar}
 					deleteChar={deleteChar}
 					enterWord={enterWord}

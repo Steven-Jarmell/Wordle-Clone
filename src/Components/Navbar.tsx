@@ -6,8 +6,10 @@ import "./styles.css";
 const Navbar = () => {
 	return (
 		<div className="navbar">
-			<AiOutlineMenu />
-			<h1>Wordle</h1>
+			<div className="icons">
+				<AiOutlineMenu />
+			</div>
+			<h1 className="page-title">Wordle</h1>
 			<div className="icons">
 				<AiOutlineQuestionCircle />
 				<IoMdStats />

@@ -92,19 +92,21 @@ const App: React.FC = () => {
 	return (
 		<div className="App">
 			<Navbar />
-			<Gameboard
-				solution={randomWord}
-				currentGuess={currentGuess}
-				guesses={guesses}
-			/>
-			<Keyboard
-				addChar={addChar}
-				deleteChar={deleteChar}
-				enterWord={enterWord}
-				solution={randomWord}
-				guesses={guesses}
-				showColor={showColor}
-			/>
+			<div className="game-container">
+				<Gameboard
+					solution={randomWord}
+					currentGuess={currentGuess}
+					guesses={guesses}
+				/>
+				<Keyboard
+					addChar={addChar}
+					deleteChar={deleteChar}
+					enterWord={enterWord}
+					solution={randomWord}
+					guesses={guesses}
+					showColor={showColor}
+				/>
+			</div>
 		</div>
 	);
 };

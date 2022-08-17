@@ -14,7 +14,7 @@ const Button = ({ letter, addChar, deleteChar, enterWord }: Props) => {
 		<button onClick={() => deleteChar()} className="letter backspace">
 			<TiBackspaceOutline />
 		</button>
-	) : letter === "Enter" ? (
+	) : letter === "ENTER" ? (
 		<button onClick={() => enterWord()} className="letter enter">
 			{letter}
 		</button>

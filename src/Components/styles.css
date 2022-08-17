@@ -30,17 +30,23 @@
 /* Button */
 
 .letter {
-	background-color: var(--key-color-present);
-	padding: 1rem;
-	border-radius: 4px;
-	cursor: pointer;
-	color: white;
-	font-family: "Roboto", sans-serif;
 	border: none;
+	height: 58px;
+	cursor: pointer;
+	border-radius: 4px;
+	flex: 1;
+	background-color: var(--key-color-present);
+	margin-right: 6px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: max-content;
+	color: white;
+	font-weight: bold;
 }
 
 .backspace {
-	font-size: 30px;
+	font-size: 1.75em;
 	padding: 0.25em;
 }
 
@@ -54,12 +60,16 @@
 	background-color: black;
 	padding: 1em;
 	gap: 0.5em;
-	height: 100%;
 }
 
 .keyboard-line {
 	display: flex;
-	gap: 0.5em;
+	width: 100%;
+	margin: 0 auto 8px;
+}
+
+.enter {
+	padding: 0.25em;
 }
 
 /* Navbar */
@@ -68,25 +78,33 @@
 	background-color: black;
 	color: white;
 	display: flex;
-	justify-content: space-between;
+	gap: .5em;
 	align-items: center;
-	padding: 2vw;
+	padding: 1em;
 	border-bottom: 1px solid #3a3a3c;
 	font-family: "Roboto", sans-serif;
 }
 
 .icons {
 	display: flex;
-	gap: 0.5em;
+	gap: .25em;
+	font-size: 1.5em;
+}
+
+.page-title {
+	margin-right: auto;
 }
 
 /* Gameboard */
+
 .gameboard {
 	background-color: black;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
+	justify-content: center;
+	flex: 1;
 }
 
 .board-row {
@@ -141,4 +159,32 @@
 
 .column4 {
 	animation-delay: 500ms;
+}
+
+@media (min-width: 550px) {
+	.letter {
+		padding: 1em;
+	}
+
+	.keyboard-line {
+		justify-content: center;
+	}
+}
+
+@media (min-width: 700px) {
+	.navbar {
+		justify-content: space-between;
+	}
+	
+	.page-title {
+		margin-right: 0;
+	}
+
+	.letter {
+		font-size: 1em;
+	}
+
+	.backspace {
+		font-size: 1.75em;
+	}
 }
