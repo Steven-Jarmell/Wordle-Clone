@@ -14,48 +14,48 @@ let validArray: string[] = [];
 let invalidArray: string[] = [];
 
 const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
-	// Create an array to store the chars of the solution word
-	let solutionArray = solution.split("");
+	
+	let solutionArray = solution.split('');
+	let guessArray = guess.split('');
 
-	// Check if the character in the current index of the guess is correct
-	const checkIfCorrect = () => {
-		for (let i = 0; i < solutionArray.length; i++) {
-			if (solutionArray[i] === letter && i === listID) {
-				return true;
-			}
-		}
-		return false;
-	};
+	let getColor = () => {
 
-	// Check if the current character is in the solution
-	const checkIfValid = () => {
-		return solutionArray.includes(letter);
-	};
-
-	// Check if the current guess has more than one of the same character but the solution only has one of this character
-	const guessHasMoreThanOneButSolutionHasOne = () => {
-		let solutionCount = 0;
-		let guessCount = 0;
-		for (let i = 0; i < solutionArray.length; i++) {
-			if (solutionArray[i] === letter) {
-				solutionCount++;
-			}
-			if (guess[i] === letter) {
-				guessCount++;
-			}
+		// If the letter is in the correct space, return 
+		if (solutionArray[listID] === letter) {
+			return 'correct-letter-space';
 		}
 
-		return guessCount > solutionCount;
-	};
+		let wrongSpot = 0;
+		let wrongLetter = 0;
+		for (let i = 0; i < solutionArray.length; i++) {
+			
+			// If the letter is in the solution array and is not in the correct position increase count
+			if (solutionArray[i] === letter && guessArray[i] !== letter) {
+				wrongSpot++;
+			}
+			
+			// If the letter is not in the solution, increment count to deal with multiple of the same letter
+			if (i <= listID && solutionArray[i] !== letter && guessArray[i] === letter) {
+				wrongLetter++;
+			}
 
-	// Push character into respective array for later
-	if (checkIfCorrect() && showColor) {
-		correctArray.push(letter);
-	} else if (checkIfValid() && showColor) {
-		validArray.push(letter);
-	} else if (showColor) {
-		invalidArray.push(letter);
-	}
+			// When we get to the index of the letter we are testing
+			// If the letter has not occured yet in the solution array or in the guess array, its wrong
+			// If the letter has occured in the guess array, but is greater than the number of wrong letters, its wrong
+			// If the letter has occured in the guess array but is less than the number of wrong letters, its valid
+			if (i >= listID) {
+				if (wrongLetter === 0) {
+					break;
+				} 
+				if (wrongLetter <= wrongSpot) {
+					return 'valid-letter';
+				}
+			}
+		}
+
+		// If the letter is not in the solution array return
+		return '';
+	};
 
 	/**
 	 * Logic for determining the color of the board square
@@ -65,12 +65,8 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 	 * If its not in the solution -> color is gray
 	 * Also color it gray if it is in the solution but the guess has > 1 of the char and the the solution only has one of the char
 	 */
-	return checkIfCorrect() && showColor ? (
-		<p className={`board-square noselect correct-letter-space column${listID}`}>
-			{letter}
-		</p>
-	) : checkIfValid() && !guessHasMoreThanOneButSolutionHasOne() && showColor ? (
-		<p className={`board-square noselect valid-letter column${listID}`}>
+	return showColor ? (
+		<p className={`board-square noselect ${getColor()} column${listID}`}>
 			{letter}
 		</p>
 	) : (

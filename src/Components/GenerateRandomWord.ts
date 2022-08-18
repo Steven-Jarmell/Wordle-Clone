@@ -13,5 +13,5 @@ function randomIntFromInterval(min: number, max: number) {
 // Generate a random word from the array
 let index: number = randomIntFromInterval(0, WORDS.length);
 let randomWord: string = WORDS[index].toUpperCase();
-
+randomWord = "MEATS";
 export { randomWord };
