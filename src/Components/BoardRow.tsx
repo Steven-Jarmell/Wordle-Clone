@@ -4,9 +4,11 @@ type Props = {
 	solution: string;
 	guess: string;
 	showColor: boolean;
+	toggle: boolean;
+	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const BoardRow = ({ solution, guess, showColor }: Props) => {
+const BoardRow = ({ solution, guess, showColor, toggle, setShowColor }: Props) => {
 	// If the current guess is empty, initialize the cells to empty, otherwise initialize cells to an array of chars
 	const cells = guess === "" ? ["", "", "", "", ""] : guess.split("");
 
@@ -14,6 +16,8 @@ const BoardRow = ({ solution, guess, showColor }: Props) => {
 	while (cells.length < 5) {
 		cells.push("");
 	}
+
+	
 
 	return (
 		<div className="board-row">
@@ -25,6 +29,8 @@ const BoardRow = ({ solution, guess, showColor }: Props) => {
 					solution={solution}
 					showColor={showColor}
 					guess={guess}
+					toggle={toggle}
+					setShowColor={setShowColor}
 				/>
 			))}
 		</div>

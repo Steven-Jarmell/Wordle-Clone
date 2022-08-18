@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Gameboard from "./Components/Gameboard";
 import Keyboard from "./Components/Keyboard";
@@ -12,6 +12,7 @@ const App: React.FC = () => {
 	const [guesses, setGuesses] = useState<string[]>([]);
 	const [gameOver, setGameOver] = useState<boolean>(false);
 	const [showColor, setShowColor] = useState<boolean>(false);
+	const [toggle, setToggle] = useState<boolean>(false);
 
 	/**
 	 * Add a char to the current guess
@@ -62,6 +63,8 @@ const App: React.FC = () => {
 		// If the guess is correct, let the player know and end the game
 		if (guesses.length <= 4) {
 			setShowColor(true);
+			setToggle(!toggle);
+			
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
 				alert("Correct");
@@ -97,6 +100,8 @@ const App: React.FC = () => {
 					solution={randomWord}
 					currentGuess={currentGuess}
 					guesses={guesses}
+					toggle={toggle}
+					setShowColor={setShowColor}
 				/>
 				<Keyboard
 					addChar={addChar}

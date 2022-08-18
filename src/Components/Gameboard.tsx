@@ -4,9 +4,11 @@ type Props = {
 	solution: string;
 	currentGuess: string;
 	guesses: string[];
+	toggle: boolean;
+	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
+const Gameboard = ({ solution, currentGuess, guesses, toggle, setShowColor }: Props) => {
 	const remainingGuesses = 5 - guesses.length;
 
 	// Create empty rows array for the leftover slots
@@ -28,19 +30,19 @@ const Gameboard = ({ solution, currentGuess, guesses }: Props) => {
 	return showRow() ? (
 		<div className="gameboard">
 			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={true} />
+				<BoardRow key={i} solution={solution} guess={guess} showColor={true} toggle={toggle} setShowColor={setShowColor} />
 			))}
 
-			<BoardRow solution={solution} guess={currentGuess} showColor={false} />
+			<BoardRow solution={solution} guess={currentGuess} showColor={false} toggle={toggle} setShowColor={setShowColor} />
 
 			{emptyRows.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={false} />
+				<BoardRow key={i} solution={solution} guess={guess} showColor={false} toggle={toggle} setShowColor={setShowColor} />
 			))}
 		</div>
 	) : (
 		<div className="gameboard">
 			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={true} />
+				<BoardRow key={i} solution={solution} guess={guess} showColor={true} toggle={toggle} setShowColor={setShowColor} />
 			))}
 		</div>
 	);

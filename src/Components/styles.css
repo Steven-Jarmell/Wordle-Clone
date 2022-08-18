@@ -25,7 +25,9 @@
 									supported by Chrome, Edge, Opera and Firefox */
 }
 
-@keyframes spin1 { 100% { transform:rotate(360deg); } }
+@keyframes flip { 
+	0% { transform: rotateX(180deg); } 
+}
 
 /* Button */
 
@@ -34,15 +36,15 @@
 	height: 58px;
 	cursor: pointer;
 	border-radius: 4px;
-	flex: 1;
 	background-color: var(--key-color-present);
 	margin-right: 6px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: max-content;
 	color: white;
 	font-weight: bold;
+	padding: .8em;
+	font-size: 1em;
 }
 
 .backspace {
@@ -55,17 +57,14 @@
 .keyboard-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	background-color: black;
-	padding: 1em;
-	gap: 0.5em;
 }
 
 .keyboard-line {
 	display: flex;
 	width: 100%;
 	margin: 0 auto 8px;
+	justify-content: center;
 }
 
 .enter {
@@ -115,26 +114,29 @@
 }
 
 .board-square {
-	background-color: var(--key-color-absent);
+	background-color: black;
+	border: 2px solid var(--key-color-absent);
 	padding: 1rem;
 	color: white;
 	font-family: "Roboto", sans-serif;
-	line-height: 1em;
 	height: 1em;
 	width: 1em;
-	font-size: 2em;
+	font-size: 1.8em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	animation-name: spin1;
+	animation-name: flip;
+	animation-duration: 250ms;
 }
 
 .valid-letter {
 	background-color: var(--key-color-yellow);
+	border: 2px solid var(--key-color-yellow);
 }
 
 .correct-letter-space {
 	background-color: var(--key-color-green);
+	border: 2px solid var(--key-color-green);
 }
 
 .invalid-letter {
@@ -142,28 +144,33 @@
 }
 
 .column0 {
-	animation-delay: 100ms;
+	
 }
 
 .column1 {
-	animation-delay: 200ms;
+	animation-delay: 250ms;
 }
 
 .column2 {
-	animation-delay: 300ms;
+	animation-delay: 500ms;
 }
 
 .column3 {
-	animation-delay: 400ms;
+	animation-delay: 750ms;
 }
 
 .column4 {
-	animation-delay: 500ms;
+	animation-delay: 1s;
 }
 
 @media (min-width: 550px) {
 	.letter {
+		font-size: 1em;
 		padding: 1em;
+	}
+
+	.backspace {
+		font-size: 1.75em;
 	}
 
 	.keyboard-line {
@@ -178,13 +185,5 @@
 	
 	.page-title {
 		margin-right: 0;
-	}
-
-	.letter {
-		font-size: 1em;
-	}
-
-	.backspace {
-		font-size: 1.75em;
 	}
 }

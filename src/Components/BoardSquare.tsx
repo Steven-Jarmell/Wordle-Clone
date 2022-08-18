@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./styles.css";
 
 type Props = {
@@ -6,6 +7,8 @@ type Props = {
 	showColor: boolean;
 	listID: number;
 	guess: string;
+	toggle: boolean;
+	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 // Create arrays for easy keyboard coloring
@@ -13,8 +16,18 @@ let correctArray: string[] = [];
 let validArray: string[] = [];
 let invalidArray: string[] = [];
 
-const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
+const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setShowColor }: Props) => {
+
+	const [animation, setAnimation] = useState<number>(0);
+
+	useEffect(() => {
+		renderAnimation();
+	}, [toggle]);
 	
+	const renderAnimation = () => {
+		return toggle ? setAnimation(1) : setAnimation(0);
+	}
+
 	let solutionArray = solution.split('');
 	let guessArray = guess.split('');
 
@@ -22,6 +35,7 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 
 		// If the letter is in the correct space, return 
 		if (solutionArray[listID] === letter) {
+			correctArray.push(letter);
 			return 'correct-letter-space';
 		}
 
@@ -48,13 +62,15 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 					break;
 				} 
 				if (wrongLetter <= wrongSpot) {
+					validArray.push(letter);
 					return 'valid-letter';
 				}
 			}
 		}
 
 		// If the letter is not in the solution array return
-		return '';
+		invalidArray.push(letter);
+		return 'invalid-letter';
 	};
 
 	/**
@@ -66,11 +82,11 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess }: Props) => {
 	 * Also color it gray if it is in the solution but the guess has > 1 of the char and the the solution only has one of the char
 	 */
 	return showColor ? (
-		<p className={`board-square noselect ${getColor()} column${listID}`}>
+		<div className={`board-square noselect ${getColor()} column${listID} animation${animation}`} >
 			{letter}
-		</p>
+		</div>
 	) : (
-		<p className={`board-square noselect column${listID}`}>{letter}</p>
+		<div className={`board-square noselect column${listID} animation${animation}`} > {letter} </div>
 	);
 };
 
