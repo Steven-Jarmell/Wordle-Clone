@@ -6,14 +6,20 @@ import "./styles.css";
 const Navbar = () => {
 	return (
 		<div className="navbar">
-			<div className="icons">
+			<button className="icon menu">
 				<AiOutlineMenu />
-			</div>
+			</button>
 			<h1 className="page-title">Wordle</h1>
 			<div className="icons">
-				<AiOutlineQuestionCircle />
-				<IoMdStats />
-				<FiSettings />
+				<button className="icon">
+					<AiOutlineQuestionCircle />
+				</button>
+				<button className="icon">
+					<IoMdStats />
+				</button>
+				<button className="icon">
+					<FiSettings />
+				</button>
 			</div>
 		</div>
 	);
