@@ -82,11 +82,11 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setSh
 	 * Also color it gray if it is in the solution but the guess has > 1 of the char and the the solution only has one of the char
 	 */
 	return showColor ? (
-		<div className={`board-square noselect ${getColor()} column${listID} animation${animation}`} >
+		<div className={`board-square noselect ${getColor()} column${listID} revealing`} >
 			{letter}
 		</div>
 	) : (
-		<div className={`board-square noselect column${listID} animation${animation}`} > {letter} </div>
+		<div className={`board-square noselect column${listID}`} > {letter} </div>
 	);
 };
 

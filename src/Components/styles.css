@@ -25,8 +25,55 @@
 									supported by Chrome, Edge, Opera and Firefox */
 }
 
-@keyframes flip { 
-	0% { transform: rotateX(180deg); } 
+@keyframes revealInvalid {
+	0% {
+		background-color: black;
+		border-color: var(--key-color-present);
+	}
+	50% {
+		background-color: black;
+		border-color: var(--key-color-present);
+	}
+
+	100% {
+		background-color: var(--key-color-absent);
+		border-color: var(--key-color-absent);
+		transform: rotateX(360deg);
+	}
+}
+
+@keyframes revealValid {
+	0% {
+		background-color: black;
+		border-color: var(--key-color-present);
+	}
+	50% {
+		background-color: black;
+		border-color: var(--key-color-present);
+	}
+
+	100% {
+		background-color: var(--key-color-yellow);
+		border-color: var(--key-color-yellow);
+		transform: rotateX(360deg);
+	}
+}
+
+@keyframes revealCorrect {
+	0% {
+		background-color: black;
+		border-color: var(--key-color-present);
+	}
+	50% {
+		background-color: black;
+		border-color: var(--key-color-present);
+	}
+
+	100% {
+		background-color: var(--key-color-green);
+		border-color: var(--key-color-green);
+		transform: rotateX(360deg);
+	}
 }
 
 /* Button */
@@ -43,7 +90,7 @@
 	align-items: center;
 	color: white;
 	font-weight: bold;
-	padding: .8em;
+	padding: 0.8em;
 	font-size: 1em;
 }
 
@@ -77,7 +124,7 @@
 	background-color: black;
 	color: white;
 	display: flex;
-	gap: .5em;
+	gap: 0.5em;
 	align-items: center;
 	padding: 1em;
 	border-bottom: 1px solid #3a3a3c;
@@ -86,7 +133,21 @@
 
 .icons {
 	display: flex;
-	gap: .25em;
+	gap: 0.25em;
+	font-size: 1.5em;
+}
+
+.icon {
+	color: white;
+	background-color: black;
+	display: flex;
+	gap: 0.25em;
+	font-size: 1em;
+	border: none;
+	cursor: pointer;
+}
+
+.menu {
 	font-size: 1.5em;
 }
 
@@ -125,8 +186,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	animation-name: flip;
-	animation-duration: 250ms;
+	animation-duration: 0.9s;
+	animation-fill-mode: backwards;
 }
 
 .valid-letter {
@@ -143,24 +204,32 @@
 	background-color: var(--key-color-absent);
 }
 
-.column0 {
-	
+.revealing.valid-letter {
+	animation-name: revealValid;
+}
+
+.revealing.correct-letter-space {
+	animation-name: revealCorrect;
+}
+
+.revealing.invalid-letter {
+	animation-name: revealInvalid;
 }
 
 .column1 {
-	animation-delay: 250ms;
+	animation-delay: 0.9s;
 }
 
 .column2 {
-	animation-delay: 500ms;
+	animation-delay: 1.8s;
 }
 
 .column3 {
-	animation-delay: 750ms;
+	animation-delay: 2.7s;
 }
 
 .column4 {
-	animation-delay: 1s;
+	animation-delay: 3.6s;
 }
 
 @media (min-width: 550px) {
@@ -182,7 +251,7 @@
 	.navbar {
 		justify-content: space-between;
 	}
-	
+
 	.page-title {
 		margin-right: 0;
 	}

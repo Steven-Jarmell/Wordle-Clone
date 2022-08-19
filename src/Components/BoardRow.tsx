@@ -17,8 +17,6 @@ const BoardRow = ({ solution, guess, showColor, toggle, setShowColor }: Props) =
 		cells.push("");
 	}
 
-	
-
 	return (
 		<div className="board-row">
 			{cells.map((c, i) => (
