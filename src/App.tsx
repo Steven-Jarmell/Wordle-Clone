@@ -94,7 +94,7 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<div className="App">
+		<>
 			<Navbar />
 			<div className="game-container">
 				<Gameboard
@@ -113,7 +113,7 @@ const App: React.FC = () => {
 					showColor={showColor}
 				/>
 			</div>
-		</div>
+		</>
 	);
 };
 
