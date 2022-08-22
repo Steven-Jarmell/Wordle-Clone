@@ -7,6 +7,15 @@
 	padding: 0;
 }
 
+@keyframes menu-animation {
+    0% {
+        transform: translateX(-350px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
 .menu-modal {
     font-family: "Roboto", sans-serif;
     box-sizing: border-box;
@@ -33,6 +42,12 @@
 
 .show-menu-false {
     display: none;
+}
+
+.show-menu-true {
+    animation-name: menu-animation;
+    animation-duration: 100ms;
+    animation-timing-function: linear;
 }
 
 .pitt-logo {
