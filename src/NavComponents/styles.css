@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+}
+
+.menu-modal {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: white;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    height: calc(100% - 76px);
+    overflow: auto;
+    background-color: #fefefe;
+    margin: 0;
+    margin-right: auto;
+    padding: .5em;
+    border: 1px solid #888;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #3a3a3c;
+    background-color: black;
+}
+
+.show-menu-false {
+    display: none;
+}
+
+.pitt-logo {
+    width: 60px;
+    height: auto;
+}
+
+/* Header */
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px;
+}
+
+.menu-exit-btn {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: none;
+    font-size: 22.5px;
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+/* Features */
+
+h2 {
+    font-size: small;
+    font-weight: bold;
+    margin: 15px 10px;
+}
+
+.menu-features {
+    border-bottom: 1px solid white;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 10px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Login */
+
+.login-container {
+    height: 10em;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: auto;
+    padding: 10px;
+}
+
+/* Footer */
+
+.menu-footer {
+    margin-top: auto;
+    text-align: center;
+}

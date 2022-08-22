@@ -3,10 +3,14 @@ import { IoMdStats } from "react-icons/io";
 import { FiSettings } from "react-icons/fi";
 import "./styles.css";
 
-const Navbar = () => {
+type Props = {
+	setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Navbar = ({setShowMenu}: Props) => {
 	return (
 		<div className="navbar">
-			<button className="icon menu">
+			<button className="icon menu" onClick={() => setShowMenu(true)}>
 				<AiOutlineMenu />
 			</button>
 			<h1 className="page-title">Wordle</h1>

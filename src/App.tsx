@@ -5,6 +5,7 @@ import Keyboard from "./Components/Keyboard";
 import Navbar from "./Components/Navbar";
 import { randomWord } from "./Components/GenerateRandomWord";
 import { WORDS } from "./Components/WordList";
+import Menu from "./NavComponents/Menu";
 
 const App: React.FC = () => {
 	// Initialize state variables/methods
@@ -13,6 +14,7 @@ const App: React.FC = () => {
 	const [gameOver, setGameOver] = useState<boolean>(false);
 	const [showColor, setShowColor] = useState<boolean>(false);
 	const [toggle, setToggle] = useState<boolean>(false);
+	const [showMenu, setShowMenu] = useState<boolean>(false);
 
 	/**
 	 * Add a char to the current guess
@@ -95,7 +97,9 @@ const App: React.FC = () => {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar 
+				setShowMenu={setShowMenu}
+			/>
 			<div className="game-container">
 				<Gameboard
 					solution={randomWord}
@@ -111,6 +115,10 @@ const App: React.FC = () => {
 					solution={randomWord}
 					guesses={guesses}
 					showColor={showColor}
+				/>
+				<Menu 
+					showMenu={showMenu}
+					setShowMenu={() => setShowMenu(false)}	
 				/>
 			</div>
 		</>
