@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import { randomWord } from "./Components/GenerateRandomWord";
 import { WORDS } from "./Components/WordList";
 import Menu from "./NavComponents/Menu";
+import Info from "./NavComponents/Info";
 
 const App: React.FC = () => {
 	// Initialize state variables/methods
@@ -15,6 +16,7 @@ const App: React.FC = () => {
 	const [showColor, setShowColor] = useState<boolean>(false);
 	const [toggle, setToggle] = useState<boolean>(false);
 	const [showMenu, setShowMenu] = useState<boolean>(false);
+	const [showInfo, setShowInfo] = useState<boolean>(true);
 
 	/**
 	 * Add a char to the current guess
@@ -59,7 +61,6 @@ const App: React.FC = () => {
 		}
 		// If the word entered is not valid, return
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
-			alert("Invalid word");
 			return;
 		}
 		// If we are not on the last guess, show the colors, add the guess to the list of guesses
@@ -69,7 +70,6 @@ const App: React.FC = () => {
 			setShowColor(true);
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
-				alert("Correct");
 				endGame();
 			}
 			setCurrentGuess("");
@@ -80,9 +80,8 @@ const App: React.FC = () => {
 			setGuesses([...guesses, currentGuess]);
 			setShowColor(true);
 			if (currentGuess === randomWord) {
-				alert("Correct");
 			} else {
-				alert(`Incorrect. Entered: ${currentGuess} Actual: ${randomWord}`);
+				alert(`Incorrect. Actual: ${randomWord}`);
 			}
 			endGame();
 		}
@@ -97,9 +96,7 @@ const App: React.FC = () => {
 
 	return (
 		<>
-			<Navbar 
-				setShowMenu={setShowMenu}
-			/>
+			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} />
 			<div className="game-container">
 				<Gameboard
 					solution={randomWord}
@@ -116,10 +113,8 @@ const App: React.FC = () => {
 					guesses={guesses}
 					showColor={showColor}
 				/>
-				<Menu 
-					showMenu={showMenu}
-					setShowMenu={() => setShowMenu(false)}	
-				/>
+				<Menu showMenu={showMenu} setShowMenu={() => setShowMenu(false)} />
+				<Info showInfo={showInfo} setShowInfo={() => setShowInfo(false)} />
 			</div>
 		</>
 	);

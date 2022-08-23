@@ -5,9 +5,10 @@ import "./styles.css";
 
 type Props = {
 	setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+	setShowInfo: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Navbar = ({setShowMenu}: Props) => {
+const Navbar = ({ setShowMenu, setShowInfo }: Props) => {
 	return (
 		<div className="navbar">
 			<button className="icon menu" onClick={() => setShowMenu(true)}>
@@ -15,7 +16,7 @@ const Navbar = ({setShowMenu}: Props) => {
 			</button>
 			<h1 className="page-title">Wordle</h1>
 			<div className="icons">
-				<button className="icon">
+				<button className="icon" onClick={() => setShowInfo(true)}>
 					<AiOutlineQuestionCircle />
 				</button>
 				<button className="icon">
