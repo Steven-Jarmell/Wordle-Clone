@@ -7,6 +7,7 @@ import { randomWord } from "./Components/GenerateRandomWord";
 import { WORDS } from "./Components/WordList";
 import Menu from "./NavComponents/Menu";
 import Info from "./NavComponents/Info";
+import Statistics from "./NavComponents/Statistics";
 
 const App: React.FC = () => {
 	// Initialize state variables/methods
@@ -17,6 +18,7 @@ const App: React.FC = () => {
 	const [toggle, setToggle] = useState<boolean>(false);
 	const [showMenu, setShowMenu] = useState<boolean>(false);
 	const [showInfo, setShowInfo] = useState<boolean>(true);
+	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 
 	/**
 	 * Add a char to the current guess
@@ -96,7 +98,7 @@ const App: React.FC = () => {
 
 	return (
 		<>
-			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} />
+			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} setShowStatistics={setShowStatistics} />
 			<div className="game-container">
 				<Gameboard
 					solution={randomWord}
@@ -115,6 +117,7 @@ const App: React.FC = () => {
 				/>
 				<Menu showMenu={showMenu} setShowMenu={() => setShowMenu(false)} />
 				<Info showInfo={showInfo} setShowInfo={() => setShowInfo(false)} />
+				<Statistics showStatistics={showStatistics} setShowStatistics={() => setShowStatistics(false)} />
 			</div>
 		</>
 	);

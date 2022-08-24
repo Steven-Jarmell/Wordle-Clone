@@ -146,7 +146,7 @@ h2 {
     left: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0,0,0,.5);
+    background-color: rgb(0, 0, 0, .7);
 }
 
 .info-modal {
@@ -256,4 +256,134 @@ h2 {
     animation-name: info-animation;
     animation-duration: 200ms;
     animation-timing-function: linear;
+}
+
+/* Statistics */
+
+.statistics-modal {
+    position: fixed;
+    background-color: #121213;
+    border-radius: 5px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    top: 10vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    width: 400px;
+}
+
+.statistics-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.statistics-header-title {
+    margin-left: auto;
+    text-align: center;
+}
+
+.statistics-header-btn {
+    margin-left: auto;
+    background-color: inherit;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+.statistics-modal-container {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, .7);
+}
+
+.main-statistics-content {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #818384;
+}
+
+.actual-statistics-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 34px;
+}
+
+.stat-title {
+    font-size: 10px;
+}
+
+.guess-distribution-container {
+    text-align: center;
+}
+
+.wrong-stats {
+    border: none;
+    background-color: inherit;
+    color: white;
+    margin-top: 20px;
+    font-size: 14px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: underline;
+}
+
+.statistics-footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.share-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(116, 227, 116);
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.show-statistics-true {
+    animation-name: info-animation;
+    animation-duration: 200ms;
+    animation-timing-function: linear;
+}
+
+.show-statistics-false {
+    display: none;
 }
