@@ -7,9 +7,10 @@ type Props = {
 	setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 	setShowInfo: React.Dispatch<React.SetStateAction<boolean>>;
 	setShowStatistics: React.Dispatch<React.SetStateAction<boolean>>;
+	setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Navbar = ({ setShowMenu, setShowInfo, setShowStatistics }: Props) => {
+const Navbar = ({ setShowMenu, setShowInfo, setShowStatistics, setShowSettings }: Props) => {
 	return (
 		<div className="navbar">
 			<button className="icon menu" onClick={() => setShowMenu(true)}>
@@ -23,7 +24,7 @@ const Navbar = ({ setShowMenu, setShowInfo, setShowStatistics }: Props) => {
 				<button className="icon" onClick={() => setShowStatistics(true)}>
 					<IoMdStats />
 				</button>
-				<button className="icon">
+				<button className="icon" onClick={() => setShowSettings(true)}>
 					<FiSettings />
 				</button>
 			</div>
