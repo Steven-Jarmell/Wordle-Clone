@@ -38,12 +38,6 @@ const Menu = ({ showMenu, setShowMenu }: Props) => {
 					</div>
 				</div>
 			</div>
-			<div className="menu-login">
-				<div className="login-container">
-					<button className="login-btn">Sign Up</button>
-					<button className="login-btn">Login</button>
-				</div>
-			</div>
 			<div className="menu-footer">Made By Steven Jarmell 2022</div>
 		</div>
 	);

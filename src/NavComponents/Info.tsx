@@ -55,15 +55,6 @@ const Info = ({ showInfo, setShowInfo }: Props) => {
                 </div>
                 <div className="info-more-info">
                     <p><b>A new WORDLE will be available each day!</b></p>
-                    <p>Never miss a Wordle. <b><u>Sign up</u></b> for our daily reminder email.</p>
-                </div>
-                <div className="info-login">
-                    <div className="stats-icon"><IoMdStats /></div>
-                    <div className="info-login-text">
-                        <p>Looking to load your saved stats?</p>
-                        <p><b><u>Log in here</u></b></p>
-                    </div>
-                    <p className="info-arrow">{'>'}</p>
                 </div>
             </div>
         </div>

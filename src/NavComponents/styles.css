@@ -108,26 +108,6 @@ h2 {
     gap: 10px;
 }
 
-/* Login */
-
-.login-container {
-    height: 10em;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.login-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: auto;
-    padding: 10px;
-}
-
 /* Footer */
 
 .menu-footer {
@@ -158,8 +138,7 @@ h2 {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    top: 4vh;
-    bottom: 4vh;
+    top: 6vh;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -218,34 +197,6 @@ h2 {
 .info-more-info {
     font-size: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #818384;
-}
-
-.info-login {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.info-login-text {
-    font-size: 15px;
-}
-
-.stats-icon {
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
-    border-radius: 5px;
-    background-color: rgb(116, 227, 116);
-}
-
-.info-arrow {
-    margin-left: auto;
-    font-size: 25px;
 }
 
 .show-info-false {
