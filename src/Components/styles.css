@@ -92,6 +92,7 @@
 	font-weight: bold;
 	padding: 0.6em;
 	font-size: 1em;
+	animation-fill-mode: backwards;
 }
 
 .backspace {
@@ -232,6 +233,54 @@
 
 .column4 {
 	animation-delay: 3.6s;
+}
+
+@keyframes revealInvalidKey {
+	0% {
+		border-color: var(--key-color-present);
+		background-color: var(--key-color-present);
+	}
+	100% {
+		background-color: var(--key-color-absent);
+		border-color: var(--key-color-absent);
+	}
+}
+
+@keyframes revealValidKey {
+	0% {
+		border-color: var(--key-color-present);
+		background-color: var(--key-color-present);
+	}
+	100% {
+		background-color: var(--key-color-yellow);
+		border-color: var(--key-color-yellow);
+	}
+}
+
+@keyframes revealCorrectKey {
+	0% {
+		border-color: var(--key-color-present);
+		background-color: var(--key-color-present);
+	}
+	100% {
+		background-color: var(--key-color-green);
+		border-color: var(--key-color-green);
+	}
+}
+
+.revealkey.invalid-letter {
+	animation-name: revealInvalidKey;
+	animation-delay: 4.5s;
+}
+
+.revealkey.valid-letter {
+	animation-name: revealValidKey;
+	animation-delay: 4.5s;
+}
+
+.revealkey.correct-letter-space {
+	animation-name: revealCorrectKey;
+	animation-delay: 4.5s;
 }
 
 @media (min-width: 550px) {

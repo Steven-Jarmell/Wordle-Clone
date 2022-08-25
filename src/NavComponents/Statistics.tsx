@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { IoMdStats } from "react-icons/io";
 import { BsFillShareFill } from "react-icons/bs";
 import Countdown from "./Countdown";
 

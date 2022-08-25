@@ -65,6 +65,7 @@ const App: React.FC = () => {
 		}
 		// If the word entered is not valid, return
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
+
 			return;
 		}
 		// If we are not on the last guess, show the colors, add the guess to the list of guesses
