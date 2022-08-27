@@ -8,6 +8,20 @@
 }
 
 :root {
+	--key-color-present:#bcbcbc;
+	--key-color-absent: #8f8f8f;
+	--key-color-yellow: #d5bb48;
+	--key-color-green: #77be70;
+	--background-color: #fff;
+	--text-color: #000000;
+	--keyboard-gameboard-color: #fff;
+	--modal-background-color: #fff;
+}
+
+:root.dark {
+	--background-color: #000000;
+	--text-color: #fff;
+	--modal-background-color: ##fff;
 	--key-color-present: #818384;
 	--key-color-absent: #3a3a3c;
 	--key-color-yellow: #b59f3b;
@@ -27,11 +41,11 @@
 
 @keyframes revealInvalid {
 	0% {
-		background-color: black;
+		background-color: var(--background-color);
 		border-color: var(--key-color-present);
 	}
 	50% {
-		background-color: black;
+		background-color: var(--background-color);
 		border-color: var(--key-color-present);
 	}
 
@@ -44,11 +58,11 @@
 
 @keyframes revealValid {
 	0% {
-		background-color: black;
+		background-color: var(--background-color);
 		border-color: var(--key-color-present);
 	}
 	50% {
-		background-color: black;
+		background-color: var(--background-color);
 		border-color: var(--key-color-present);
 	}
 
@@ -61,11 +75,11 @@
 
 @keyframes revealCorrect {
 	0% {
-		background-color: black;
+		background-color: var(--background-color);
 		border-color: var(--key-color-present);
 	}
 	50% {
-		background-color: black;
+		background-color: var(--background-color);
 		border-color: var(--key-color-present);
 	}
 
@@ -88,7 +102,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: white;
+	color: var(--keyboard-gameboard-color);
 	font-weight: bold;
 	padding: 0.6em;
 	font-size: 1em;
@@ -105,7 +119,7 @@
 .keyboard-container {
 	display: flex;
 	flex-direction: column;
-	background-color: black;
+	background-color: var(--background-color);
 }
 
 .keyboard-line {
@@ -122,13 +136,13 @@
 /* Navbar */
 
 .navbar {
-	background-color: black;
-	color: white;
+	background-color: var(--background-color);
+	color: var(--text-color);
 	display: flex;
 	gap: 0.5em;
 	align-items: center;
 	padding: 20px;
-	border-bottom: 1px solid #3a3a3c;
+	border-bottom: 1px solid var(--key-color-absent);
 	font-family: "Roboto", sans-serif;
 	max-height: 35px;
 	min-height: 35px;
@@ -141,8 +155,8 @@
 }
 
 .icon {
-	color: white;
-	background-color: black;
+	color: var(--text-color);
+	background-color: var(--background-color);
 	display: flex;
 	gap: 0.25em;
 	font-size: 1em;
@@ -161,7 +175,7 @@
 /* Gameboard */
 
 .gameboard {
-	background-color: black;
+	background-color: var(--background-color);
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
@@ -178,10 +192,10 @@
 }
 
 .board-square {
-	background-color: black;
+	background-color: var(--background-color);
 	border: 2px solid var(--key-color-absent);
 	padding: 1rem;
-	color: white;
+	color: var(--keyboard-gameboard-color);
 	font-family: "Roboto", sans-serif;
 	height: 1em;
 	width: 1em;

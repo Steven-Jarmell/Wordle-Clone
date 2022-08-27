@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Switch from "react-switch";
 
 type Props = {
 	showSettings: boolean;
 	setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
+	handleDarkMode: (isDark: boolean) => void
 };
 
-const Settings = ({ showSettings, setShowSettings }: Props) => {
+const Settings = ({ showSettings, setShowSettings, handleDarkMode }: Props) => {
 	let [hardState, setHardState] = useState<boolean>(false);
 	let [darkState, setDarkState] = useState<boolean>(false);
 	let [highContrastState, setHighContrastState] = useState<boolean>(false);
+
+	useEffect(() => {
+		handleDarkMode(darkState);
+	}, [darkState, setDarkState]);
 
 	return (
 		<div className={`settings-modal-container show-settings-${showSettings}`}>

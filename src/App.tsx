@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Gameboard from "./Components/Gameboard";
 import Keyboard from "./Components/Keyboard";
@@ -21,6 +21,19 @@ const App: React.FC = () => {
 	const [showInfo, setShowInfo] = useState<boolean>(true);
 	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 	const [showSettings, setShowSettings] = useState<boolean>(false);
+	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+	useEffect(() => {
+		if (isDarkMode) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	}, [isDarkMode]);
+
+	const handleDarkMode = (isDark: boolean) => {
+		setIsDarkMode(isDark);
+	}
 
 	/**
 	 * Add a char to the current guess
@@ -121,7 +134,7 @@ const App: React.FC = () => {
 				<Menu showMenu={showMenu} setShowMenu={() => setShowMenu(false)} />
 				<Info showInfo={showInfo} setShowInfo={() => setShowInfo(false)} />
 				<Statistics showStatistics={showStatistics} setShowStatistics={() => setShowStatistics(false)} />
-				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} />
+				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} handleDarkMode={handleDarkMode} />
 			</div>
 		</>
 	);
