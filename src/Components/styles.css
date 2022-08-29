@@ -14,7 +14,7 @@
 	--key-color-green: #77be70;
 	--background-color: #fff;
 	--text-color: #000000;
-	--keyboard-gameboard-color: #fff;
+	--keyboard-gameboard-color: #000000;
 	--modal-background-color: #fff;
 }
 
@@ -274,7 +274,6 @@
 @keyframes revealCorrectKey {
 	0% {
 		border-color: var(--key-color-present);
-		background-color: var(--key-color-present);
 	}
 	100% {
 		background-color: var(--key-color-green);
