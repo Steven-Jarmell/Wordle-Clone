@@ -27,22 +27,16 @@ const Gameboard = ({ solution, currentGuess, guesses, toggle, setShowColor }: Pr
 
 	// If the gameboard is not full, show the previous guesses, current guess, and remaining rows
 	// Else, simply render the guess array
-	return showRow() ? (
+	return (
 		<div className="gameboard">
 			{guesses.map((guess, i) => (
 				<BoardRow key={i} solution={solution} guess={guess} showColor={true} toggle={toggle} setShowColor={setShowColor} />
 			))}
 
-			<BoardRow solution={solution} guess={currentGuess} showColor={false} toggle={toggle} setShowColor={setShowColor} />
+			{showRow() && <BoardRow solution={solution} guess={currentGuess} showColor={false} toggle={toggle} setShowColor={setShowColor} />}
 
 			{emptyRows.map((guess, i) => (
 				<BoardRow key={i} solution={solution} guess={guess} showColor={false} toggle={toggle} setShowColor={setShowColor} />
-			))}
-		</div>
-	) : (
-		<div className="gameboard">
-			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={true} toggle={toggle} setShowColor={setShowColor} />
 			))}
 		</div>
 	);

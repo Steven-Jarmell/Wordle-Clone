@@ -26,6 +26,7 @@
 	--key-color-absent: #3a3a3c;
 	--key-color-yellow: #b59f3b;
 	--key-color-green: #538d4e;
+	--keyboard-gameboard-color: #fff;
 }
 
 /* Shoutout to: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
