@@ -9,8 +9,12 @@ import Menu from "./NavComponents/Menu";
 import Info from "./NavComponents/Info";
 import Statistics from "./NavComponents/Statistics";
 import Settings from "./NavComponents/Settings";
+import Congradulations from "./Components/Congradulations";
 
 const App: React.FC = () => {
+
+	const prefersDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
 	// Initialize state variables/methods
 	const [currentGuess, setCurrentGuess] = useState<string>("");
 	const [guesses, setGuesses] = useState<string[]>([]);
@@ -21,10 +25,11 @@ const App: React.FC = () => {
 	const [showInfo, setShowInfo] = useState<boolean>(true);
 	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 	const [showSettings, setShowSettings] = useState<boolean>(false);
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+	const [isDarkMode, setIsDarkMode] = useState<boolean>(prefersDarkMode);
 	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(false);
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
+	const [showCongradulations, setShowCongradulations] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (isDarkMode) {
@@ -101,6 +106,7 @@ const App: React.FC = () => {
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
 				endGame();
+				setShowCongradulations(true);
 			}
 			setCurrentGuess("");
 			setShowColor(true);
@@ -110,6 +116,8 @@ const App: React.FC = () => {
 			setGuesses([...guesses, currentGuess]);
 			setShowColor(true);
 			if (currentGuess === randomWord) {
+				endGame();
+				setShowCongradulations(true);
 			} else {
 				alert(`Incorrect. Actual: ${randomWord}`);
 			}
@@ -130,12 +138,13 @@ const App: React.FC = () => {
 		setGuesses([]);
 		setGameOver(false);
 		setResetKeyboard(true);
+		setShowCongradulations(false);
 	};
 
 	return (
 		<>
 			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} setShowStatistics={setShowStatistics} setShowSettings={setShowSettings} />
-			<button className="reset-button" onClick={() => handleReset()}>Reset</button>
+			<button className="reset-button" onClick={() => handleReset()}>{randomWord}</button>
 			<div className="game-container">
 				<Gameboard
 					solution={randomWord}
@@ -157,7 +166,8 @@ const App: React.FC = () => {
 				<Menu showMenu={showMenu} setShowMenu={() => setShowMenu(false)} />
 				<Info showInfo={showInfo} setShowInfo={() => setShowInfo(false)} />
 				<Statistics showStatistics={showStatistics} setShowStatistics={() => setShowStatistics(false)} />
-				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} handleDarkMode={handleDarkMode} handleHighContrastMode={handleHighContrastMode} />
+				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} handleDarkMode={handleDarkMode} handleHighContrastMode={handleHighContrastMode} isDarkMode={isDarkMode}/>
+				<Congradulations showCongradulations={showCongradulations} handleReset={handleReset}/>
 			</div>
 		</>
 	);

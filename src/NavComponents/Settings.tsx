@@ -6,11 +6,12 @@ type Props = {
 	setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
 	handleDarkMode: (isDark: boolean) => void;
 	handleHighContrastMode: (isHighContrastMode: boolean) => void;
+	isDarkMode: boolean;
 };
 
-const Settings = ({ showSettings, setShowSettings, handleDarkMode, handleHighContrastMode }: Props) => {
+const Settings = ({ showSettings, setShowSettings, handleDarkMode, handleHighContrastMode, isDarkMode }: Props) => {
 	let [hardState, setHardState] = useState<boolean>(false);
-	let [darkState, setDarkState] = useState<boolean>(false);
+	let [darkState, setDarkState] = useState<boolean>(isDarkMode);
 	let [highContrastState, setHighContrastState] = useState<boolean>(false);
 
 	useEffect(() => {
