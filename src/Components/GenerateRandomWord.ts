@@ -6,12 +6,17 @@ import { WORDS } from "./WordList";
  * @param max Upper bound
  * @returns Integer between [min, max]
  */
-function randomIntFromInterval(min: number, max: number) {
+function randomIntFromInterval(min: number, max: number): number {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 // Generate a random word from the array
-let index: number = randomIntFromInterval(0, WORDS.length);
-let randomWord: string = WORDS[index].toUpperCase();
+function getRandomWord(): string {
+	let index: number = randomIntFromInterval(0, WORDS.length);
+	let randomWord: string = WORDS[index].toUpperCase();
 
-export { randomWord };
+	return randomWord;
+}
+
+
+export { getRandomWord };

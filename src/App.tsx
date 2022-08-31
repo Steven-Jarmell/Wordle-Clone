@@ -3,7 +3,7 @@ import "./App.css";
 import Gameboard from "./Components/Gameboard";
 import Keyboard from "./Components/Keyboard";
 import Navbar from "./Components/Navbar";
-import { randomWord } from "./Components/GenerateRandomWord";
+import { getRandomWord } from "./Components/GenerateRandomWord";
 import { WORDS } from "./Components/WordList";
 import Menu from "./NavComponents/Menu";
 import Info from "./NavComponents/Info";
@@ -22,6 +22,8 @@ const App: React.FC = () => {
 	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 	const [showSettings, setShowSettings] = useState<boolean>(false);
 	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
+	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (isDarkMode) {
@@ -78,7 +80,6 @@ const App: React.FC = () => {
 		}
 		// If the word entered is not valid, return
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
-
 			return;
 		}
 		// If we are not on the last guess, show the colors, add the guess to the list of guesses
@@ -112,9 +113,18 @@ const App: React.FC = () => {
 		setGameOver(true);
 	};
 
+	const handleReset = () => {
+		setRandomWord(getRandomWord());
+		setCurrentGuess('');
+		setGuesses([]);
+		setGameOver(false);
+		setResetKeyboard(true);
+	};
+
 	return (
 		<>
 			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} setShowStatistics={setShowStatistics} setShowSettings={setShowSettings} />
+			<button className="reset-button" onClick={() => handleReset()}>Reset</button>
 			<div className="game-container">
 				<Gameboard
 					solution={randomWord}
@@ -122,6 +132,8 @@ const App: React.FC = () => {
 					guesses={guesses}
 					toggle={toggle}
 					setShowColor={setShowColor}
+					resetKeyboard = {resetKeyboard}
+					setResetKeyboard = {setResetKeyboard}
 				/>
 				<Keyboard
 					addChar={addChar}

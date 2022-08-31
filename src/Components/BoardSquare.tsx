@@ -9,6 +9,8 @@ type Props = {
 	guess: string;
 	toggle: boolean;
 	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
+	resetKeyboard: boolean;
+	setResetKeyboard: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 // Create arrays for easy keyboard coloring
@@ -16,7 +18,7 @@ let correctArray: string[] = [];
 let validArray: string[] = [];
 let invalidArray: string[] = [];
 
-const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setShowColor }: Props) => {
+const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setShowColor, resetKeyboard, setResetKeyboard }: Props) => {
 
 	const [animation, setAnimation] = useState<number>(0);
 
@@ -26,6 +28,13 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setSh
 	
 	const renderAnimation = () => {
 		return toggle ? setAnimation(1) : setAnimation(0);
+	}
+
+	if (resetKeyboard === true) {
+		correctArray = [];
+		validArray = [];
+		invalidArray = [];
+		setResetKeyboard(false);
 	}
 
 	let solutionArray = solution.split('');
