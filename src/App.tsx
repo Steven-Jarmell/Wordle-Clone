@@ -22,6 +22,7 @@ const App: React.FC = () => {
 	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 	const [showSettings, setShowSettings] = useState<boolean>(false);
 	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(false);
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 
@@ -31,10 +32,20 @@ const App: React.FC = () => {
 		} else {
 			document.documentElement.classList.remove('dark');
 		}
-	}, [isDarkMode]);
+
+		if (isHighContrastMode) {
+			document.documentElement.classList.add('highcontrast');
+		} else {
+			document.documentElement.classList.remove('highcontrast');
+		}
+	}, [isDarkMode, isHighContrastMode]);
 
 	const handleDarkMode = (isDark: boolean) => {
 		setIsDarkMode(isDark);
+	}
+
+	const handleHighContrastMode = (isHighContrast: boolean) => {
+		setHighContrastMode(isHighContrast);
 	}
 
 	/**
@@ -146,7 +157,7 @@ const App: React.FC = () => {
 				<Menu showMenu={showMenu} setShowMenu={() => setShowMenu(false)} />
 				<Info showInfo={showInfo} setShowInfo={() => setShowInfo(false)} />
 				<Statistics showStatistics={showStatistics} setShowStatistics={() => setShowStatistics(false)} />
-				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} handleDarkMode={handleDarkMode} />
+				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} handleDarkMode={handleDarkMode} handleHighContrastMode={handleHighContrastMode} />
 			</div>
 		</>
 	);

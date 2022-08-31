@@ -30,6 +30,11 @@
 	--modal-background-color: #000000;
 }
 
+:root.highcontrast {
+	--key-color-yellow: #85c0f9;
+	--key-color-green: #f5793a;
+}
+
 /* Shoutout to: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
 .noselect {
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -276,6 +281,7 @@
 @keyframes revealCorrectKey {
 	0% {
 		border-color: var(--key-color-present);
+		background-color: var(--key-color-present);
 	}
 	100% {
 		background-color: var(--key-color-green);

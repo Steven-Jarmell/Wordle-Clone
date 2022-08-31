@@ -4,17 +4,19 @@ import Switch from "react-switch";
 type Props = {
 	showSettings: boolean;
 	setShowSettings: React.Dispatch<React.SetStateAction<boolean>>;
-	handleDarkMode: (isDark: boolean) => void
+	handleDarkMode: (isDark: boolean) => void;
+	handleHighContrastMode: (isHighContrastMode: boolean) => void;
 };
 
-const Settings = ({ showSettings, setShowSettings, handleDarkMode }: Props) => {
+const Settings = ({ showSettings, setShowSettings, handleDarkMode, handleHighContrastMode }: Props) => {
 	let [hardState, setHardState] = useState<boolean>(false);
 	let [darkState, setDarkState] = useState<boolean>(false);
 	let [highContrastState, setHighContrastState] = useState<boolean>(false);
 
 	useEffect(() => {
 		handleDarkMode(darkState);
-	}, [darkState, setDarkState]);
+		handleHighContrastMode(highContrastState);
+	}, [darkState, setDarkState, highContrastState, setHighContrastState, handleDarkMode, handleHighContrastMode]);
 
 	return (
 		<div className={`settings-modal-container show-settings-${showSettings}`}>
