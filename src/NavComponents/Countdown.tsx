@@ -11,12 +11,11 @@ const Countdown = () => {
     let minutesTillMidnight = (hoursTillMidnight - Math.floor(hoursTillMidnight)) * 60;
     let secondsTillMidnight = (minutesTillMidnight - Math.floor(minutesTillMidnight)) * 60;
 
-    let clock:Date = new Date();
-    clock.setHours(hoursTillMidnight);
-    clock.setMinutes(minutesTillMidnight);
-    clock.setSeconds(secondsTillMidnight);
+    let hours = `${(hoursTillMidnight < 10) ? '0' : ''}${Math.floor(hoursTillMidnight)}`;
+    let minutes = `${(minutesTillMidnight < 10) ? '0' : ''}${Math.floor(minutesTillMidnight)}`;
+    let seconds = `${(secondsTillMidnight < 10) ? '0' : ''}${Math.floor(secondsTillMidnight)}`;
 
-    let time = dateFormat(clock, "hh:MM:ss");
+    let time = `${hours}:${minutes}:${seconds}`;
 
     return (
         <h1>{time}</h1>
