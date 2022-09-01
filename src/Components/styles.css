@@ -146,13 +146,12 @@
 	background-color: var(--background-color);
 	color: var(--text-color);
 	display: flex;
-	gap: 0.5em;
 	align-items: center;
 	padding: 20px;
 	border-bottom: 1px solid var(--key-color-absent);
 	font-family: "Roboto", sans-serif;
-	max-height: 35px;
-	min-height: 35px;
+	height: 35px;
+	gap: 10px;
 }
 
 .icons {
@@ -322,6 +321,12 @@
 @media (min-width: 700px) {
 	.navbar {
 		justify-content: space-between;
+	}
+
+	.box {
+		flex: 1;
+		display: flex;
+		justify-content: center;
 	}
 
 	.page-title {

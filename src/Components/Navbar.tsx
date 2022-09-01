@@ -13,11 +13,11 @@ type Props = {
 const Navbar = ({ setShowMenu, setShowInfo, setShowStatistics, setShowSettings }: Props) => {
 	return (
 		<div className="navbar">
-			<button className="icon menu" onClick={() => setShowMenu(true)}>
+			<button className="icon menu box" onClick={() => setShowMenu(true)}>
 				<AiOutlineMenu />
 			</button>
-			<h1 className="page-title">Wordle</h1>
-			<div className="icons">
+			<h1 className="page-title box">Wordle</h1>
+			<div className="icons box">
 				<button className="icon" onClick={() => setShowInfo(true)}>
 					<AiOutlineQuestionCircle />
 				</button>
