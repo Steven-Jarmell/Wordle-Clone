@@ -5,6 +5,7 @@
 *::after {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 :root {
@@ -105,7 +106,7 @@
 	cursor: pointer;
 	border-radius: 4px;
 	background-color: var(--key-color-present);
-	margin-right: 6px;
+	margin: 0 3px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -127,6 +128,8 @@
 	display: flex;
 	flex-direction: column;
 	background-color: var(--background-color);
+	height: 40%;
+	flex: 1;
 }
 
 .keyboard-line {
@@ -150,7 +153,7 @@
 	padding: 20px;
 	border-bottom: 1px solid var(--key-color-absent);
 	font-family: "Roboto", sans-serif;
-	height: 35px;
+	height: 9vh;
 	gap: 10px;
 }
 
@@ -187,7 +190,7 @@
 	flex-direction: column;
 	gap: 5px;
 	justify-content: center;
-	flex: 1;
+	height: 60%;
 }
 
 .board-row {
@@ -203,14 +206,14 @@
 	padding: 1rem;
 	color: var(--keyboard-gameboard-color);
 	font-family: "Roboto", sans-serif;
-	height: 1em;
-	width: 1em;
 	font-size: 1.8em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	animation-duration: 0.9s;
 	animation-fill-mode: backwards;
+	height: 60px;
+	width: 60px;
 }
 
 .valid-letter {

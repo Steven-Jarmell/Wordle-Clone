@@ -6,6 +6,7 @@ body {
     width: 100%;
     background-color: var(--background-color);
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .root {
@@ -21,10 +22,11 @@ body {
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
+    height: 91vh;
+    margin-top: 1vh;
 }
 
 .reset-button {
-    margin-top: 20px;
     padding: 10px;
     display: block;
     margin-left: auto;

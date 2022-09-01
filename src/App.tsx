@@ -144,8 +144,8 @@ const App: React.FC = () => {
 	return (
 		<>
 			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} setShowStatistics={setShowStatistics} setShowSettings={setShowSettings} />
-			<button className="reset-button" onClick={() => handleReset()}>{randomWord}</button>
 			<div className="game-container">
+			<button className="reset-button" onClick={() => handleReset()}>Reset</button>
 				<Gameboard
 					solution={randomWord}
 					currentGuess={currentGuess}
