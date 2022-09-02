@@ -12,8 +12,9 @@ import Settings from "./NavComponents/Settings";
 import Congradulations from "./Components/Congradulations";
 
 const App: React.FC = () => {
-
-	const prefersDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+	const prefersDarkMode =
+		window.matchMedia &&
+		window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 	// Initialize state variables/methods
 	const [currentGuess, setCurrentGuess] = useState<string>("");
@@ -30,28 +31,29 @@ const App: React.FC = () => {
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 	const [showCongradulations, setShowCongradulations] = useState<boolean>(false);
+	const [toggleInvalid, setToggleInvalid] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (isDarkMode) {
-			document.documentElement.classList.add('dark');
+			document.documentElement.classList.add("dark");
 		} else {
-			document.documentElement.classList.remove('dark');
+			document.documentElement.classList.remove("dark");
 		}
 
 		if (isHighContrastMode) {
-			document.documentElement.classList.add('highcontrast');
+			document.documentElement.classList.add("highcontrast");
 		} else {
-			document.documentElement.classList.remove('highcontrast');
+			document.documentElement.classList.remove("highcontrast");
 		}
 	}, [isDarkMode, isHighContrastMode]);
 
 	const handleDarkMode = (isDark: boolean) => {
 		setIsDarkMode(isDark);
-	}
+	};
 
 	const handleHighContrastMode = (isHighContrast: boolean) => {
 		setHighContrastMode(isHighContrast);
-	}
+	};
 
 	/**
 	 * Add a char to the current guess
@@ -80,6 +82,7 @@ const App: React.FC = () => {
 		if (gameOver) {
 			return;
 		}
+		setToggleInvalid(false);
 		setCurrentGuess(currentGuess.slice(0, -1));
 	};
 
@@ -96,6 +99,8 @@ const App: React.FC = () => {
 		}
 		// If the word entered is not valid, return
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
+			setToggleInvalid(true);
+			
 			return;
 		}
 		// If we are not on the last guess, show the colors, add the guess to the list of guesses
@@ -134,7 +139,7 @@ const App: React.FC = () => {
 
 	const handleReset = () => {
 		setRandomWord(getRandomWord());
-		setCurrentGuess('');
+		setCurrentGuess("");
 		setGuesses([]);
 		setGameOver(false);
 		setResetKeyboard(true);
@@ -143,17 +148,26 @@ const App: React.FC = () => {
 
 	return (
 		<>
-			<Navbar setShowMenu={setShowMenu} setShowInfo={setShowInfo} setShowStatistics={setShowStatistics} setShowSettings={setShowSettings} />
+			<Navbar
+				setShowMenu={setShowMenu}
+				setShowInfo={setShowInfo}
+				setShowStatistics={setShowStatistics}
+				setShowSettings={setShowSettings}
+			/>
 			<div className="game-container">
-			<button className="reset-button" onClick={() => handleReset()}>Reset</button>
+				<button className="reset-button" onClick={() => handleReset()}>
+					Reset
+				</button>
 				<Gameboard
 					solution={randomWord}
 					currentGuess={currentGuess}
 					guesses={guesses}
 					toggle={toggle}
 					setShowColor={setShowColor}
-					resetKeyboard = {resetKeyboard}
-					setResetKeyboard = {setResetKeyboard}
+					resetKeyboard={resetKeyboard}
+					setResetKeyboard={setResetKeyboard}
+					toggleInvalid={toggleInvalid}
+					setToggleInvalid={setToggleInvalid}
 				/>
 				<Keyboard
 					addChar={addChar}
@@ -165,9 +179,21 @@ const App: React.FC = () => {
 				/>
 				<Menu showMenu={showMenu} setShowMenu={() => setShowMenu(false)} />
 				<Info showInfo={showInfo} setShowInfo={() => setShowInfo(false)} />
-				<Statistics showStatistics={showStatistics} setShowStatistics={() => setShowStatistics(false)} />
-				<Settings showSettings={showSettings} setShowSettings={() => setShowSettings(false)} handleDarkMode={handleDarkMode} handleHighContrastMode={handleHighContrastMode} isDarkMode={isDarkMode}/>
-				<Congradulations showCongradulations={showCongradulations} handleReset={handleReset}/>
+				<Statistics
+					showStatistics={showStatistics}
+					setShowStatistics={() => setShowStatistics(false)}
+				/>
+				<Settings
+					showSettings={showSettings}
+					setShowSettings={() => setShowSettings(false)}
+					handleDarkMode={handleDarkMode}
+					handleHighContrastMode={handleHighContrastMode}
+					isDarkMode={isDarkMode}
+				/>
+				<Congradulations
+					showCongradulations={showCongradulations}
+					handleReset={handleReset}
+				/>
 			</div>
 		</>
 	);

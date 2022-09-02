@@ -8,9 +8,21 @@ type Props = {
 	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 	resetKeyboard: boolean;
 	setResetKeyboard: React.Dispatch<React.SetStateAction<boolean>>;
+	toggleInvalid: boolean;
+	setToggleInvalid: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Gameboard = ({ solution, currentGuess, guesses, toggle, setShowColor, resetKeyboard, setResetKeyboard }: Props) => {
+const Gameboard = ({
+	solution,
+	currentGuess,
+	guesses,
+	toggle,
+	setShowColor,
+	resetKeyboard,
+	setResetKeyboard,
+	toggleInvalid,
+	setToggleInvalid,
+}: Props) => {
 	const remainingGuesses = 5 - guesses.length;
 
 	// Create empty rows array for the leftover slots
@@ -32,13 +44,43 @@ const Gameboard = ({ solution, currentGuess, guesses, toggle, setShowColor, rese
 	return (
 		<div className="gameboard">
 			{guesses.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={true} toggle={toggle} setShowColor={setShowColor} resetKeyboard = {resetKeyboard} setResetKeyboard = {setResetKeyboard}/>
+				<BoardRow
+					key={i}
+					solution={solution}
+					guess={guess}
+					showColor={true}
+					toggle={toggle}
+					setShowColor={setShowColor}
+					resetKeyboard={resetKeyboard}
+					setResetKeyboard={setResetKeyboard}
+				/>
 			))}
 
-			{showRow() && <BoardRow solution={solution} guess={currentGuess} showColor={false} toggle={toggle} setShowColor={setShowColor} resetKeyboard = {resetKeyboard} setResetKeyboard = {setResetKeyboard}/>}
+			{showRow() && (
+				<BoardRow
+					solution={solution}
+					guess={currentGuess}
+					showColor={false}
+					toggle={toggle}
+					setShowColor={setShowColor}
+					resetKeyboard={resetKeyboard}
+					setResetKeyboard={setResetKeyboard}
+					toggleInvalid={toggleInvalid}
+					setToggleInvalid={setToggleInvalid}
+				/>
+			)}
 
 			{emptyRows.map((guess, i) => (
-				<BoardRow key={i} solution={solution} guess={guess} showColor={false} toggle={toggle} setShowColor={setShowColor} resetKeyboard = {resetKeyboard} setResetKeyboard = {setResetKeyboard}/>
+				<BoardRow
+					key={i}
+					solution={solution}
+					guess={guess}
+					showColor={false}
+					toggle={toggle}
+					setShowColor={setShowColor}
+					resetKeyboard={resetKeyboard}
+					setResetKeyboard={setResetKeyboard}
+				/>
 			))}
 		</div>
 	);
