@@ -10,6 +10,7 @@ import Info from "./NavComponents/Info";
 import Statistics from "./NavComponents/Statistics";
 import Settings from "./NavComponents/Settings";
 import Congradulations from "./Components/Congradulations";
+import InvalidWord from "./Components/InvalidWord";
 
 const App: React.FC = () => {
 	const prefersDarkMode =
@@ -194,6 +195,7 @@ const App: React.FC = () => {
 					showCongradulations={showCongradulations}
 					handleReset={handleReset}
 				/>
+				<InvalidWord show={toggleInvalid}/>
 			</div>
 		</>
 	);
