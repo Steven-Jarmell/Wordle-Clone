@@ -14,7 +14,7 @@ import InvalidWord from "./Components/InvalidWord";
 import InvalidLength from "./Components/InvalidLength";
 
 const App: React.FC = () => {
-	const prefersDarkMode =
+	const userPrefersDark =
 		window.matchMedia &&
 		window.matchMedia("(prefers-color-scheme: dark)").matches;
 
@@ -28,13 +28,18 @@ const App: React.FC = () => {
 	const [showInfo, setShowInfo] = useState<boolean>(true);
 	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 	const [showSettings, setShowSettings] = useState<boolean>(false);
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(prefersDarkMode);
+	const [isDarkMode, setIsDarkMode] = useState<boolean>(
+		localStorage.getItem('dark-theme') ? localStorage.getItem('dark-theme') === 'true'
+		: userPrefersDark ? true : false
+	);
 	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(false);
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 	const [showCongradulations, setShowCongradulations] = useState<boolean>(false);
 	const [toggleInvalidWord, setToggleInvalidWord] = useState<boolean>(false);
 	const [toggleInvalidLength, setToggleInvalidLength] = useState<boolean>(false);
+
+	
 
 	useEffect(() => {
 		if (isDarkMode) {
@@ -52,6 +57,7 @@ const App: React.FC = () => {
 
 	const handleDarkMode = (isDark: boolean) => {
 		setIsDarkMode(isDark);
+		localStorage.setItem('dark-theme', isDark ? 'true' : 'false');
 	};
 
 	const handleHighContrastMode = (isHighContrast: boolean) => {

@@ -63,10 +63,6 @@ const Statistics = ({ showStatistics, setShowStatistics }: Props) => {
                     <div className="countdown-container">
                         <Countdown />
                     </div>
-                    <button className="share-button">
-                        <span>Share</span>
-                        <BsFillShareFill />
-                    </button>
                 </div>
 			</div>
 		</div>

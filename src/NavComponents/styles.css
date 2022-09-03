@@ -126,7 +126,7 @@ h2 {
     left: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0, .7);
+    background-color: rgb(0, 0, 0, .5);
 }
 
 .info-modal {
@@ -259,7 +259,7 @@ h2 {
     left: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0, .7);
+    background-color: rgb(0, 0, 0, .5);
 }
 
 .main-statistics-content {
@@ -390,7 +390,7 @@ h2 {
     left: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0, .7);
+    background-color: rgb(0, 0, 0, .5);
 }
 
 .setting {
