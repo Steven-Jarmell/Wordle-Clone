@@ -11,6 +11,7 @@ import Statistics from "./NavComponents/Statistics";
 import Settings from "./NavComponents/Settings";
 import Congradulations from "./Components/Congradulations";
 import InvalidWord from "./Components/InvalidWord";
+import InvalidLength from "./Components/InvalidLength";
 
 const App: React.FC = () => {
 	const prefersDarkMode =
@@ -32,7 +33,8 @@ const App: React.FC = () => {
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 	const [showCongradulations, setShowCongradulations] = useState<boolean>(false);
-	const [toggleInvalid, setToggleInvalid] = useState<boolean>(false);
+	const [toggleInvalidWord, setToggleInvalidWord] = useState<boolean>(false);
+	const [toggleInvalidLength, setToggleInvalidLength] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (isDarkMode) {
@@ -71,6 +73,7 @@ const App: React.FC = () => {
 		) {
 			return;
 		}
+		setToggleInvalidLength(false);
 		setCurrentGuess(`${currentGuess}${value}`);
 	};
 
@@ -83,7 +86,8 @@ const App: React.FC = () => {
 		if (gameOver) {
 			return;
 		}
-		setToggleInvalid(false);
+		setToggleInvalidLength(false);
+		setToggleInvalidWord(false);
 		setCurrentGuess(currentGuess.slice(0, -1));
 	};
 
@@ -95,13 +99,16 @@ const App: React.FC = () => {
 	 */
 	const enterWord = () => {
 		// If the game is over or if the current guess is not 5 characters, do not allow enter to run
-		if (gameOver || currentGuess.length < 5) {
+		if (gameOver) {
+			return;
+		}
+		else if (currentGuess.length < 5) {
+			setToggleInvalidLength(true);
 			return;
 		}
 		// If the word entered is not valid, return
 		else if (!WORDS.includes(currentGuess.toLowerCase())) {
-			setToggleInvalid(true);
-			
+			setToggleInvalidWord(true);
 			return;
 		}
 		// If we are not on the last guess, show the colors, add the guess to the list of guesses
@@ -167,8 +174,9 @@ const App: React.FC = () => {
 					setShowColor={setShowColor}
 					resetKeyboard={resetKeyboard}
 					setResetKeyboard={setResetKeyboard}
-					toggleInvalid={toggleInvalid}
-					setToggleInvalid={setToggleInvalid}
+					toggleInvalidWord={toggleInvalidWord}
+					setToggleInvalidWord={setToggleInvalidWord}
+					toggleInvalidLength={toggleInvalidLength}
 				/>
 				<Keyboard
 					addChar={addChar}
@@ -195,7 +203,8 @@ const App: React.FC = () => {
 					showCongradulations={showCongradulations}
 					handleReset={handleReset}
 				/>
-				<InvalidWord show={toggleInvalid}/>
+				<InvalidWord show={toggleInvalidWord}/>
+				<InvalidLength show={toggleInvalidLength} />
 			</div>
 		</>
 	);

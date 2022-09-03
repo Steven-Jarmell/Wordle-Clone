@@ -453,6 +453,39 @@
     align-items: center;
 }
 
-.show-invalid-false {
+.show-invalid-word-false {
 	display: none;
 }
+
+/* Invalid length */
+
+.invalid-length-modal {
+	position: fixed;
+	font-family: "Roboto", sans-serif;
+	background-color: var(--text-color);
+	color: var(--modal-background-color);
+	border-radius: 5px;
+	top: 9.5vh;
+	height: 6vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.invalid-length-container {
+	display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-invalid-length-false {
+	display: none;
+}
+

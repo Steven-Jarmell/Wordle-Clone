@@ -8,11 +8,12 @@ type Props = {
 	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 	resetKeyboard: boolean;
 	setResetKeyboard: React.Dispatch<React.SetStateAction<boolean>>;
-	toggleInvalid?: boolean;
-	setToggleInvalid?: React.Dispatch<React.SetStateAction<boolean>>;
+	toggleInvalidWord?: boolean;
+	setToggleInvalidWord?: React.Dispatch<React.SetStateAction<boolean>>;
+	toggleInvalidLength?: boolean;
 };
 
-const BoardRow = ({ solution, guess, showColor, toggle, setShowColor, resetKeyboard, setResetKeyboard, toggleInvalid, setToggleInvalid }: Props) => {
+const BoardRow = ({ solution, guess, showColor, toggle, setShowColor, resetKeyboard, setResetKeyboard, toggleInvalidWord, toggleInvalidLength }: Props) => {
 	// If the current guess is empty, initialize the cells to empty, otherwise initialize cells to an array of chars
 	const cells = guess === "" ? ["", "", "", "", ""] : guess.split("");
 
@@ -22,7 +23,7 @@ const BoardRow = ({ solution, guess, showColor, toggle, setShowColor, resetKeybo
 	}
 
 	return (
-		<div className={`board-row invalid-${toggleInvalid}`}>
+		<div className={`board-row invalid-${toggleInvalidWord || toggleInvalidLength}`}>
 			{cells.map((c, i) => (
 				<BoardSquare
 					key={i}
