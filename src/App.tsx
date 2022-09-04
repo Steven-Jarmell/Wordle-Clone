@@ -30,7 +30,9 @@ const App: React.FC = () => {
 	const [showColor, setShowColor] = useState<boolean>(false);
 	const [toggle, setToggle] = useState<boolean>(false);
 	const [showMenu, setShowMenu] = useState<boolean>(false);
-	const [showInfo, setShowInfo] = useState<boolean>(true);
+	const [showInfo, setShowInfo] = useState<boolean>(
+		(guesses.length > 0 || currentGuess.length > 0) ? false : true
+	);
 	const [showStatistics, setShowStatistics] = useState<boolean>(false);
 	const [showSettings, setShowSettings] = useState<boolean>(false);
 	const [isDarkMode, setIsDarkMode] = useState<boolean>(
