@@ -32,7 +32,9 @@ const App: React.FC = () => {
 		localStorage.getItem('dark-theme') ? localStorage.getItem('dark-theme') === 'true'
 		: userPrefersDark ? true : false
 	);
-	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(false);
+	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(
+		localStorage.getItem('dark-theme') ? localStorage.getItem('dark-theme') === 'true' : false
+	);
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 	const [showCongradulations, setShowCongradulations] = useState<boolean>(false);
@@ -62,6 +64,7 @@ const App: React.FC = () => {
 
 	const handleHighContrastMode = (isHighContrast: boolean) => {
 		setHighContrastMode(isHighContrast);
+		localStorage.setItem('high-contrast', isHighContrast ? 'true' : 'false');
 	};
 
 	/**
@@ -204,6 +207,7 @@ const App: React.FC = () => {
 					handleDarkMode={handleDarkMode}
 					handleHighContrastMode={handleHighContrastMode}
 					isDarkMode={isDarkMode}
+					isHighContrastMode={isHighContrastMode}
 				/>
 				<Congradulations
 					showCongradulations={showCongradulations}
