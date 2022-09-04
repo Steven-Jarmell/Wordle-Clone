@@ -19,8 +19,13 @@ const App: React.FC = () => {
 		window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 	// Initialize state variables/methods
-	const [currentGuess, setCurrentGuess] = useState<string>("");
-	const [guesses, setGuesses] = useState<string[]>([]);
+	const [currentGuess, setCurrentGuess] = useState<string>(
+		localStorage.getItem('current-guess') ? String(localStorage.getItem('current-guess')) : ""
+	);
+	const [guesses, setGuesses] = useState<string[]>(
+		localStorage.getItem('guesses') ? String(localStorage.getItem('guesses'))?.split('.') : []
+	);
+	
 	const [gameOver, setGameOver] = useState<boolean>(false);
 	const [showColor, setShowColor] = useState<boolean>(false);
 	const [toggle, setToggle] = useState<boolean>(false);
@@ -33,7 +38,7 @@ const App: React.FC = () => {
 		: userPrefersDark ? true : false
 	);
 	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(
-		localStorage.getItem('dark-theme') ? localStorage.getItem('dark-theme') === 'true' : false
+		localStorage.getItem('high-contrast') ? localStorage.getItem('high-contrast') === 'true' : false
 	);
 	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
@@ -41,7 +46,13 @@ const App: React.FC = () => {
 	const [toggleInvalidWord, setToggleInvalidWord] = useState<boolean>(false);
 	const [toggleInvalidLength, setToggleInvalidLength] = useState<boolean>(false);
 
-	
+	useEffect(() => {
+		localStorage.setItem('current-guess', currentGuess);
+	}, [currentGuess, setCurrentGuess]);
+
+	useEffect(() => {
+		localStorage.setItem('guesses', guesses.join('.'))
+	}, [guesses, setGuesses]);
 
 	useEffect(() => {
 		if (isDarkMode) {
@@ -131,6 +142,7 @@ const App: React.FC = () => {
 				setShowCongradulations(true);
 			}
 			setCurrentGuess("");
+			
 			setShowColor(true);
 			// If we are on the last guess, add the guess to the list of guesses and show the colors
 			// If the last guess was correct, let the player know they won, else let them know they lost and what the actual word was
