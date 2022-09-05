@@ -48,6 +48,27 @@ const App: React.FC = () => {
 	const [toggleInvalidWord, setToggleInvalidWord] = useState<boolean>(false);
 	const [toggleInvalidLength, setToggleInvalidLength] = useState<boolean>(false);
 
+	const [gamesPlayed, setGamesPlayed] = useState<number>(
+		localStorage.getItem('games-played') ? Number(localStorage.getItem('games-played')) : 0
+	);
+	const [wins, setWins] = useState<number>(
+		localStorage.getItem('wins') ? (Number(localStorage.getItem('wins'))) : 0
+	);
+	const [currentStreak, setCurrentStreak] = useState<number>(
+		localStorage.getItem('win-streak') ? Number(localStorage.getItem('win-streak')) : 0
+	);
+	const [maxStreak, setMaxStreak] = useState<number>(
+		localStorage.getItem('max-streak') ? Number(localStorage.getItem('max-streak')) : 0
+	);
+
+	useEffect(() => {
+		localStorage.setItem('games-played', String(gamesPlayed));
+		localStorage.setItem('win-percent', String(wins));
+		localStorage.setItem('win-streak', String(currentStreak));
+		localStorage.setItem('max-streak', String(maxStreak));
+		setMaxStreak(Math.max(currentStreak, maxStreak));
+	}, [gamesPlayed, wins, currentStreak, maxStreak, setGamesPlayed, setWins, setCurrentStreak, setMaxStreak]);
+
 	useEffect(() => {
 		localStorage.setItem('current-guess', currentGuess);
 	}, [currentGuess, setCurrentGuess]);
@@ -140,6 +161,9 @@ const App: React.FC = () => {
 			setShowColor(true);
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
+				setGamesPlayed(gamesPlayed => gamesPlayed += 1);
+				setCurrentStreak(currentStreak => currentStreak += 1);
+				setWins(wins => wins += 1);
 				endGame();
 				setShowCongradulations(true);
 			}
@@ -152,11 +176,15 @@ const App: React.FC = () => {
 			setGuesses([...guesses, currentGuess]);
 			setShowColor(true);
 			if (currentGuess === randomWord) {
+				setWins(wins => wins += 1);
+				setCurrentStreak(currentStreak => currentStreak += 1);
 				endGame();
 				setShowCongradulations(true);
 			} else {
+				setCurrentStreak(0);
 				alert(`Incorrect. Actual: ${randomWord}`);
 			}
+			setGamesPlayed(gamesPlayed => gamesPlayed+= 1);
 			endGame();
 		}
 	};
@@ -165,6 +193,7 @@ const App: React.FC = () => {
 	 * Function to set the game state to over
 	 */
 	const endGame = () => {
+		setMaxStreak(Math.max(currentStreak, maxStreak));
 		setGameOver(true);
 	};
 
@@ -187,7 +216,7 @@ const App: React.FC = () => {
 			/>
 			<div className="game-container">
 				<button className="reset-button" onClick={() => handleReset()}>
-					Reset
+					{randomWord}
 				</button>
 				<Gameboard
 					solution={randomWord}
@@ -214,6 +243,10 @@ const App: React.FC = () => {
 				<Statistics
 					showStatistics={showStatistics}
 					setShowStatistics={() => setShowStatistics(false)}
+					gamesPlayed={gamesPlayed}
+					wins={wins}
+					currentStreak={currentStreak}
+					maxStreak={maxStreak}
 				/>
 				<Settings
 					showSettings={showSettings}

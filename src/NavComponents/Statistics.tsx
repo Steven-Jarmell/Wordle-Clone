@@ -5,9 +5,13 @@ import Countdown from "./Countdown";
 type Props = {
 	showStatistics: boolean;
 	setShowStatistics: React.Dispatch<React.SetStateAction<boolean>>;
+	gamesPlayed: number;
+	wins: number;
+	currentStreak: number;
+	maxStreak: number;
 };
 
-const Statistics = ({ showStatistics, setShowStatistics }: Props) => {
+const Statistics = ({ showStatistics, setShowStatistics, gamesPlayed, wins, currentStreak, maxStreak }: Props) => {
 	const [time, setTime] = useState(Date.now());
 	useEffect(() => {
 		const interval = setInterval(() => setTime(Date.now()), 1000);
@@ -33,19 +37,19 @@ const Statistics = ({ showStatistics, setShowStatistics }: Props) => {
 				<div className="main-statistics-content">
 					<div className="actual-statistics-container">
 						<div className="stats">
-							<p className="stat-value">0</p>
+							<p className="stat-value">{gamesPlayed}</p>
 							<p className="stat-title">Played</p>
 						</div>
 						<div className="stats">
-							<p className="stat-value">0</p>
+							<p className="stat-value">{(wins > 0) ? Math.floor((wins / gamesPlayed) * 100) : 0}</p>
 							<p className="stat-title">Win %</p>
 						</div>
 						<div className="stats">
-							<p className="stat-value">0</p>
+							<p className="stat-value">{currentStreak}</p>
 							<p className="stat-title">Current Streak</p>
 						</div>
 						<div className="stats">
-							<p className="stat-value">0</p>
+							<p className="stat-value">{maxStreak}</p>
 							<p className="stat-title">Max Streak</p>
 						</div>
 					</div>
