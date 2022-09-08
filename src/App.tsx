@@ -63,11 +63,16 @@ const App: React.FC = () => {
 
 	useEffect(() => {
 		localStorage.setItem('games-played', String(gamesPlayed));
-		localStorage.setItem('win-percent', String(wins));
+		localStorage.setItem('wins', String(wins));
 		localStorage.setItem('win-streak', String(currentStreak));
 		localStorage.setItem('max-streak', String(maxStreak));
 		setMaxStreak(Math.max(currentStreak, maxStreak));
 	}, [gamesPlayed, wins, currentStreak, maxStreak, setGamesPlayed, setWins, setCurrentStreak, setMaxStreak]);
+
+	useEffect(() => {
+		let rate = localStorage.getItem(`guess-rate-${guesses.length}`);
+		localStorage.setItem(`guess-rate-${guesses.length}`, rate ? String(parseInt(rate) + 1) : '1');
+	}, [wins]);
 
 	useEffect(() => {
 		localStorage.setItem('current-guess', currentGuess);

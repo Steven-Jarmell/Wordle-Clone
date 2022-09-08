@@ -435,3 +435,22 @@ h2 {
 .show-settings-false {
     display: none;
 }
+
+.guess-distribution-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.guess-line {
+    display: flex;
+    gap: 5px;
+}
+
+.guess-bar {
+    background-color: var(--key-color-absent);
+    text-align: right;
+    padding-right: 5px;
+    width: 10%;
+}
