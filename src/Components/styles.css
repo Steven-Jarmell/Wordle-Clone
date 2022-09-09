@@ -218,12 +218,10 @@
 
 .valid-letter {
 	background-color: var(--key-color-yellow);
-	border: 2px solid var(--key-color-yellow);
 }
 
 .correct-letter-space {
 	background-color: var(--key-color-green);
-	border: 2px solid var(--key-color-green);
 }
 
 .invalid-letter {

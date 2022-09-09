@@ -19,7 +19,7 @@ const Gameboard = ({
 	setResetKeyboard,
 	toggleInvalidWord,
 	setToggleInvalidWord,
-	toggleInvalidLength
+	toggleInvalidLength,
 }: Props) => {
 	const remainingGuesses = 5 - guesses.length;
 

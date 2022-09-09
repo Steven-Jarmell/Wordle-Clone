@@ -18,20 +18,19 @@ const Button = ({ letter, addChar, deleteChar, enterWord }: Props) => {
 		<button onClick={() => enterWord()} className="letter enter">
 			{letter}
 		</button>
-	) : correctArray.includes(letter) ? (
-		<button onClick={() => addChar(letter)} className="letter revealkey correct-letter-space">
-			{letter}
-		</button>
-	) : validArray.includes(letter) ? (
-		<button onClick={() => addChar(letter)} className="letter revealkey valid-letter">
-			{letter}
-		</button>
-	) : invalidArray.includes(letter) ? (
-		<button onClick={() => addChar(letter)} className="letter invalid-letter revealkey">
-			{letter}
-		</button>
 	) : (
-		<button onClick={() => addChar(letter)} className="letter revealkey">
+		<button
+			onClick={() => addChar(letter)}
+			className={`letter revealkey ${
+				correctArray.includes(letter)
+					? "correct-letter-space"
+					: validArray.includes(letter)
+					? "valid-letter"
+					: invalidArray.includes(letter)
+					? "invalid-letter"
+					: ""
+			}`}
+		>
 			{letter}
 		</button>
 	);
