@@ -28,7 +28,7 @@ const App: React.FC = () => {
 	
 	const [gameOver, setGameOver] = useState<boolean>(false);
 	const [showColor, setShowColor] = useState<boolean>(false);
-	const [toggle, setToggle] = useState<boolean>(false);
+	
 	const [showMenu, setShowMenu] = useState<boolean>(false);
 	const [showInfo, setShowInfo] = useState<boolean>(
 		(guesses.length > 0 || currentGuess.length > 0) ? false : true
@@ -162,7 +162,7 @@ const App: React.FC = () => {
 		// If we are not on the last guess, show the colors, add the guess to the list of guesses
 		// If the guess is correct, let the player know and end the game
 		if (guesses.length <= 4) {
-			setToggle(!toggle);
+			
 			setShowColor(true);
 			setGuesses([...guesses, currentGuess]);
 			if (currentGuess === randomWord) {
@@ -227,8 +227,6 @@ const App: React.FC = () => {
 					solution={randomWord}
 					currentGuess={currentGuess}
 					guesses={guesses}
-					toggle={toggle}
-					setShowColor={setShowColor}
 					resetKeyboard={resetKeyboard}
 					setResetKeyboard={setResetKeyboard}
 					toggleInvalidWord={toggleInvalidWord}

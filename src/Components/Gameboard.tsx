@@ -1,12 +1,9 @@
-import { BooleanLiteral } from "typescript";
 import BoardRow from "./BoardRow";
 
 type Props = {
 	solution: string;
 	currentGuess: string;
 	guesses: string[];
-	toggle: boolean;
-	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 	resetKeyboard: boolean;
 	setResetKeyboard: React.Dispatch<React.SetStateAction<boolean>>;
 	toggleInvalidWord: boolean;
@@ -18,8 +15,6 @@ const Gameboard = ({
 	solution,
 	currentGuess,
 	guesses,
-	toggle,
-	setShowColor,
 	resetKeyboard,
 	setResetKeyboard,
 	toggleInvalidWord,
@@ -52,8 +47,6 @@ const Gameboard = ({
 					solution={solution}
 					guess={guess}
 					showColor={true}
-					toggle={toggle}
-					setShowColor={setShowColor}
 					resetKeyboard={resetKeyboard}
 					setResetKeyboard={setResetKeyboard}
 				/>
@@ -64,8 +57,6 @@ const Gameboard = ({
 					solution={solution}
 					guess={currentGuess}
 					showColor={false}
-					toggle={toggle}
-					setShowColor={setShowColor}
 					resetKeyboard={resetKeyboard}
 					setResetKeyboard={setResetKeyboard}
 					toggleInvalidWord={toggleInvalidWord}
@@ -80,10 +71,7 @@ const Gameboard = ({
 					solution={solution}
 					guess={guess}
 					showColor={false}
-					toggle={toggle}
-					setShowColor={setShowColor}
 					resetKeyboard={resetKeyboard}
-					setResetKeyboard={setResetKeyboard}
 				/>
 			))}
 		</div>

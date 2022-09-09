@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./styles.css";
 
 type Props = {
@@ -7,10 +6,8 @@ type Props = {
 	showColor: boolean;
 	listID: number;
 	guess: string;
-	toggle: boolean;
-	setShowColor: React.Dispatch<React.SetStateAction<boolean>>;
 	resetKeyboard: boolean;
-	setResetKeyboard: React.Dispatch<React.SetStateAction<boolean>>;
+	setResetKeyboard?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 // Create arrays for easy keyboard coloring
@@ -18,47 +15,48 @@ let correctArray: string[] = [];
 let validArray: string[] = [];
 let invalidArray: string[] = [];
 
-const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setShowColor, resetKeyboard, setResetKeyboard }: Props) => {
-
-	const [animation, setAnimation] = useState<number>(0);
-
-	useEffect(() => {
-		renderAnimation();
-	}, [toggle]);
-	
-	const renderAnimation = () => {
-		return toggle ? setAnimation(1) : setAnimation(0);
-	}
-
+const BoardSquare = ({
+	letter,
+	solution,
+	showColor,
+	listID,
+	guess,
+	resetKeyboard,
+	setResetKeyboard,
+}: Props) => {
+	// Clear the arrays if user clicks reset
 	if (resetKeyboard === true) {
 		correctArray = [];
 		validArray = [];
 		invalidArray = [];
-		setResetKeyboard(false);
+		setResetKeyboard?.(false);
 	}
 
-	let solutionArray = solution.split('');
-	let guessArray = guess.split('');
+	let solutionArray = solution.split("");
+	let guessArray = guess.split("");
 
+	// Function which gets the color of the square we are currently on
 	let getColor = () => {
-
-		// If the letter is in the correct space, return 
+		// If the letter is in the correct space, return
 		if (solutionArray[listID] === letter) {
 			correctArray.push(letter);
-			return 'correct-letter-space';
+			return "correct-letter-space";
 		}
 
 		let wrongSpot = 0;
 		let wrongLetter = 0;
 		for (let i = 0; i < solutionArray.length; i++) {
-			
 			// If the letter is in the solution array and is not in the correct position increase count
 			if (solutionArray[i] === letter && guessArray[i] !== letter) {
 				wrongSpot++;
 			}
-			
+
 			// If the letter is not in the solution, increment count to deal with multiple of the same letter
-			if (i <= listID && solutionArray[i] !== letter && guessArray[i] === letter) {
+			if (
+				i <= listID &&
+				solutionArray[i] !== letter &&
+				guessArray[i] === letter
+			) {
 				wrongLetter++;
 			}
 
@@ -69,33 +67,28 @@ const BoardSquare = ({ letter, solution, showColor, listID, guess, toggle, setSh
 			if (i >= listID) {
 				if (wrongLetter === 0) {
 					break;
-				} 
+				}
 				if (wrongLetter <= wrongSpot) {
 					validArray.push(letter);
-					return 'valid-letter';
+					return "valid-letter";
 				}
 			}
 		}
 
 		// If the letter is not in the solution array return
 		invalidArray.push(letter);
-		return 'invalid-letter';
+		return "invalid-letter";
 	};
 
-	/**
-	 * Logic for determining the color of the board square
-	 * If its in the correct index -> color it green
-	 * If its in the solution but not in the right index -> color it yellow.
-	 * Also color it yellow if the solution has more than one of the char and the other is not in the right position
-	 * If its not in the solution -> color is gray
-	 * Also color it gray if it is in the solution but the guess has > 1 of the char and the the solution only has one of the char
-	 */
+	// Render the board square with the given color
 	return showColor ? (
-		<div className={`board-square noselect ${getColor()} column${listID} revealing`} >
+		<div
+			className={`board-square noselect ${getColor()} column${listID} revealing`}
+		>
 			{letter}
 		</div>
 	) : (
-		<div className={`board-square noselect column${listID}`} > {letter} </div>
+		<div className={`board-square noselect`}> {letter} </div>
 	);
 };
 
