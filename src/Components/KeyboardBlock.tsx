@@ -11,11 +11,11 @@ type Props = {
 
 const Button = ({ letter, addChar, deleteChar, enterWord }: Props) => {
 	return letter === "Back" ? (
-		<button onClick={() => deleteChar()} className="letter backspace">
+		<button onClick={(e) => {deleteChar(); e.currentTarget.blur()}} className="letter backspace">
 			<TiBackspaceOutline />
 		</button>
 	) : letter === "ENTER" ? (
-		<button onClick={() => enterWord()} className="letter enter">
+		<button onClick={(e) => {enterWord(); e.currentTarget.blur()}} className="letter enter">
 			{letter}
 		</button>
 	) : (

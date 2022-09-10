@@ -218,14 +218,17 @@
 
 .valid-letter {
 	background-color: var(--key-color-yellow);
+	border: solid var(--key-color-yellow);
 }
 
 .correct-letter-space {
 	background-color: var(--key-color-green);
+	border: solid var(--key-color-green);
 }
 
 .invalid-letter {
 	background-color: var(--key-color-absent);
+	border: solid var(--key-color-absent);
 }
 
 .revealing.valid-letter {
@@ -442,13 +445,12 @@
 
 .invalid-word-container {
 	display: flex;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+}
+
+.invalid-length-container {
+	display: flex;
+	justify-content: center;
 }
 
 .show-invalid-word-false {
@@ -470,17 +472,6 @@
 	align-items: center;
 	justify-content: center;
 	padding: 20px;
-}
-
-.invalid-length-container {
-	display: flex;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
 }
 
 .show-invalid-length-false {
