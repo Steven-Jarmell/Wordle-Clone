@@ -42,7 +42,9 @@ const App: React.FC = () => {
 	const [isHighContrastMode, setHighContrastMode] = useState<boolean>(
 		localStorage.getItem('high-contrast') ? localStorage.getItem('high-contrast') === 'true' : false
 	);
-	const [randomWord, setRandomWord] = useState<string>(getRandomWord());
+	const [randomWord, setRandomWord] = useState<string>(
+		localStorage.getItem('current-word') ? String(localStorage.getItem('current-word')) : getRandomWord()
+	);
 	const [resetKeyboard, setResetKeyboard] = useState<boolean>(false);
 	const [showCongradulations, setShowCongradulations] = useState<boolean>(false);
 	const [toggleInvalidWord, setToggleInvalidWord] = useState<boolean>(false);
@@ -221,7 +223,7 @@ const App: React.FC = () => {
 			/>
 			<div className="game-container">
 				<button className="reset-button" onClick={(e) => {handleReset(); e.currentTarget.blur()}}>
-					Reset
+					{randomWord}
 				</button>
 				<Gameboard
 					solution={randomWord}

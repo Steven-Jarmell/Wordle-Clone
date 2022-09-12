@@ -14,9 +14,8 @@ function randomIntFromInterval(min: number, max: number): number {
 function getRandomWord(): string {
 	let index: number = randomIntFromInterval(0, WORDS.length);
 	let randomWord: string = WORDS[index].toUpperCase();
-
+	localStorage.setItem('current-word', randomWord);
 	return randomWord;
 }
-
 
 export { getRandomWord };
