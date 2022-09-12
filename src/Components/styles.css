@@ -231,6 +231,18 @@
 	border: solid var(--key-color-absent);
 }
 
+.keyboard-valid-letter {
+	background-color: var(--key-color-yellow);
+}
+
+.keyboard-invalid-letter {
+	background-color: var(--key-color-absent);
+}
+
+.keyboard-correct-letter-space {
+	background-color: var(--key-color-green);
+}
+
 .revealing.valid-letter {
 	animation-name: revealValid;
 }

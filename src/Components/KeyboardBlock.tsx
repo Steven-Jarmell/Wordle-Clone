@@ -23,11 +23,11 @@ const Button = ({ letter, addChar, deleteChar, enterWord }: Props) => {
 			onClick={() => addChar(letter)}
 			className={`letter revealkey ${
 				correctArray.includes(letter)
-					? "correct-letter-space"
+					? "keyboard-correct-letter-space"
 					: validArray.includes(letter)
-					? "valid-letter"
+					? "leyboard-valid-letter"
 					: invalidArray.includes(letter)
-					? "invalid-letter"
+					? "keyboard-invalid-letter"
 					: ""
 			}`}
 		>
