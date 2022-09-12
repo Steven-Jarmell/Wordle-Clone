@@ -271,34 +271,6 @@
 	animation-delay: 3.6s;
 }
 
-@keyframes revealInvalidKey {
-	0% {
-		background-color: var(--key-color-present);
-	}
-	100% {
-		background-color: var(--key-color-absent);
-	}
-}
-
-@keyframes revealValidKey {
-	0% {
-		background-color: var(--key-color-present);
-	}
-	100% {
-		background-color: var(--key-color-yellow);
-		
-	}
-}
-
-@keyframes revealCorrectKey {
-	0% {		
-		background-color: var(--key-color-present);
-	}
-	100% {
-		background-color: var(--key-color-green);
-	}
-}
-
 .revealkey.keyboard-invalid-letter {
 	transition-delay: 4.5s;
 	background-color: var(--key-color-absent);
