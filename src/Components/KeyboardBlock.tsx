@@ -25,7 +25,7 @@ const Button = ({ letter, addChar, deleteChar, enterWord }: Props) => {
 				correctArray.includes(letter)
 					? "keyboard-correct-letter-space"
 					: validArray.includes(letter)
-					? "leyboard-valid-letter"
+					? "keyboard-valid-letter"
 					: invalidArray.includes(letter)
 					? "keyboard-invalid-letter"
 					: ""

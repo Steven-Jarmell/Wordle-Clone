@@ -114,7 +114,7 @@
 	font-weight: bold;
 	padding: 0.6em;
 	font-size: 1em;
-	animation-fill-mode: backwards;
+	transition-property: background-color;
 }
 
 .backspace {
@@ -273,50 +273,45 @@
 
 @keyframes revealInvalidKey {
 	0% {
-		border-color: var(--key-color-present);
 		background-color: var(--key-color-present);
 	}
 	100% {
 		background-color: var(--key-color-absent);
-		border-color: var(--key-color-absent);
 	}
 }
 
 @keyframes revealValidKey {
 	0% {
-		border-color: var(--key-color-present);
 		background-color: var(--key-color-present);
 	}
 	100% {
 		background-color: var(--key-color-yellow);
-		border-color: var(--key-color-yellow);
+		
 	}
 }
 
 @keyframes revealCorrectKey {
-	0% {
-		border-color: var(--key-color-present);
+	0% {		
 		background-color: var(--key-color-present);
 	}
 	100% {
 		background-color: var(--key-color-green);
-		border-color: var(--key-color-green);
 	}
 }
 
-.revealkey.invalid-letter {
-	animation-name: revealInvalidKey;
-	animation-delay: 4.5s;
+.revealkey.keyboard-invalid-letter {
+	transition-delay: 4.5s;
+	background-color: var(--key-color-absent);
 }
 
-.revealkey.valid-letter {
-	animation-name: revealValidKey;
-	animation-delay: 4.5s;
+.revealkey.keyboard-valid-letter {
+	transition-delay: 4.5s;
+	background-color: var(--key-color-yellow);
 }
 
-.revealkey.correct-letter-space {
-	animation-name: revealCorrectKey;
-	animation-delay: 4.5s;
+.revealkey.keyboard-correct-letter-space {
+	transition-delay: 4.5s;
+	background-color: var(--key-color-green);
 }
 
 @media (min-width: 550px) {
