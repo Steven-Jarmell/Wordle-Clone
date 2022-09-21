@@ -263,6 +263,7 @@ const App: React.FC = () => {
 				/>
 				<Congradulations
 					showCongradulations={showCongradulations}
+					setShowCongradulations={setShowCongradulations}
 					handleReset={handleReset}
 				/>
 				<InvalidWord show={toggleInvalidWord}/>

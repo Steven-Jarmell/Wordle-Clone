@@ -373,6 +373,30 @@
 	background-color: var(--key-color-green);
 }
 
+.congradulations-modal-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.congradulations-close-button {
+	background-color: var(--text-color);
+	color: var(--background-color);
+	height: 30px;
+	width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	border-radius: 5px;
+	border: 2px solid var(--key-color-green);
+}
+
+.congradulations-close-button:hover {
+	background-color: var(--key-color-green);
+}
+
 @keyframes congradulations-animation {
 	0% {
 		opacity: 100%;
