@@ -95,13 +95,6 @@ const Statistics = ({ showStatistics, setShowStatistics, gamesPlayed, wins, curr
 							My stats don't look right {">"}
 					</button>
 				</div>
-                <div className="sign-in-container"></div>
-                <div className="statistics-footer">
-                    <p>Next Wordle</p>
-                    <div className="countdown-container">
-                        <Countdown />
-                    </div>
-                </div>
 			</div>
 		</div>
 	);

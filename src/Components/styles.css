@@ -17,6 +17,7 @@
 	--text-color: #000000;
 	--keyboard-gameboard-color: #000000;
 	--modal-background-color: #fff;
+	--time: 425ms;
 }
 
 :root.dark {
@@ -55,12 +56,13 @@
 	50% {
 		background-color: var(--background-color);
 		border-color: var(--key-color-present);
+		transform: rotateX(90deg);
 	}
 
 	100% {
 		background-color: var(--key-color-absent);
 		border-color: var(--key-color-absent);
-		transform: rotateX(360deg);
+		
 	}
 }
 
@@ -72,12 +74,13 @@
 	50% {
 		background-color: var(--background-color);
 		border-color: var(--key-color-present);
+		transform: rotateX(90deg);
 	}
 
 	100% {
 		background-color: var(--key-color-yellow);
 		border-color: var(--key-color-yellow);
-		transform: rotateX(360deg);
+	
 	}
 }
 
@@ -89,12 +92,13 @@
 	50% {
 		background-color: var(--background-color);
 		border-color: var(--key-color-present);
+		transform: rotateX(90deg);
 	}
 
 	100% {
 		background-color: var(--key-color-green);
 		border-color: var(--key-color-green);
-		transform: rotateX(360deg);
+		
 	}
 }
 
@@ -210,7 +214,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	animation-duration: 0.9s;
+	animation-duration: var(--time);
 	animation-fill-mode: backwards;
 	height: 60px;
 	width: 60px;
@@ -256,33 +260,33 @@
 }
 
 .column1 {
-	animation-delay: 0.9s;
+	animation-delay: calc(var(--time) - 0.15s);
 }
 
 .column2 {
-	animation-delay: 1.8s;
+	animation-delay: calc(2 * var(--time) - 0.25s);
 }
 
 .column3 {
-	animation-delay: 2.7s;
+	animation-delay: calc(3 * var(--time) - 0.35s);
 }
 
 .column4 {
-	animation-delay: 3.6s;
+	animation-delay: calc(4 * var(--time) - 0.45s);
 }
 
 .revealkey.keyboard-invalid-letter {
-	transition-delay: 4.5s;
+	transition-delay: calc(5 * var(--time) - .45s);
 	background-color: var(--key-color-absent);
 }
 
 .revealkey.keyboard-valid-letter {
-	transition-delay: 4.5s;
+	transition-delay: calc(5 * var(--time) - .45s);
 	background-color: var(--key-color-yellow);
 }
 
 .revealkey.keyboard-correct-letter-space {
-	transition-delay: 4.5s;
+	transition-delay: calc(5 * var(--time) - .45s);
 	background-color: var(--key-color-green);
 }
 
@@ -355,7 +359,7 @@
 .show-congradulations-true {
 	opacity: 0;
 	animation-name: congradulations-animation;
-	animation-delay: 4.5s;
+	animation-delay: calc(5 * var(--time));
 	animation-duration: 100ms;
 	animation-fill-mode: forwards;
 }

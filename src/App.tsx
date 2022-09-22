@@ -223,7 +223,7 @@ const App: React.FC = () => {
 			/>
 			<div className="game-container">
 				<button className="reset-button" onClick={(e) => {handleReset(); e.currentTarget.blur()}}>
-					{randomWord}
+					Reset
 				</button>
 				<Gameboard
 					solution={randomWord}

@@ -16,7 +16,7 @@ const Info = ({ showInfo, setShowInfo }: Props) => {
                     <button onClick={() => setShowInfo(false)}className="info-header-btn">x</button>
                 </div>
                 <div className="info-rules">
-                    <p>Guess the <b>WORDLE</b> in 6 tries.</p>
+                    <p>Guess the <b>RANDLE</b> in 6 tries.</p>
                     <p>Each guess must be a valid 5-letter word. Hit the enter button to submit.</p>
                     <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
                 </div>
@@ -54,7 +54,7 @@ const Info = ({ showInfo, setShowInfo }: Props) => {
                     </div>
                 </div>
                 <div className="info-more-info">
-                    <p><b>A new WORDLE will be available each day!</b></p>
+                    <p><b>A new RANDLE will be available each reset!</b></p>
                 </div>
             </div>
         </div>

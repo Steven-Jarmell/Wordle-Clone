@@ -16,7 +16,7 @@ const Navbar = ({ setShowMenu, setShowInfo, setShowStatistics, setShowSettings }
 			<button className="icon menu box" onClick={() => setShowMenu(true)}>
 				<AiOutlineMenu />
 			</button>
-			<h1 className="page-title box">Wordle</h1>
+			<h1 className="page-title box">Randle</h1>
 			<div className="icons box">
 				<button className="icon" onClick={() => setShowInfo(true)}>
 					<AiOutlineQuestionCircle />
