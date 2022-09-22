@@ -1,9 +1,8 @@
-# World Clone
-*Made using TypeScript and React.js*
+# Randle
 
-## **Work in Progress**
+Why wait a day to play the next round? Play as many as you'd like with a random word each time!
 
-## Goals
-> To make a fully functional wordle clone in order to better gain experience using TypeScript and React.js
-> To gain experience using information science to create a bot to play the game against
-> To gain experience using Docker and a CI/CD pipeline to ensure excellent code coverage
+### :gear: Tech Used :
+- React
+- TypeScript
+- Npm
