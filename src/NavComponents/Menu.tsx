@@ -2,6 +2,7 @@ import "./styles.css";
 import { GiAbstract050, GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 import { FaRobot } from "react-icons/fa";
 import { MdGroups } from "react-icons/md";
+import { BsHeart } from "react-icons/bs";
 
 type Props = {
 	showMenu: boolean;
@@ -35,6 +36,10 @@ const Menu = ({ showMenu, setShowMenu }: Props) => {
 					<div className="feature">
 						<MdGroups /> 
                         Group Stats (Under Construction)
+					</div>
+                    <div className="feature">
+						<BsHeart /> 
+                        Hi Annie
 					</div>
 				</div>
 			</div>
