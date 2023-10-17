@@ -138,7 +138,7 @@ h2 {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    top: 6vh;
+    top: 2vh;
     display: flex;
     flex-direction: column;
     padding: 20px;
