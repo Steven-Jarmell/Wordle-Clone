@@ -303,6 +303,11 @@
 	.keyboard-line {
 		justify-content: center;
 	}
+
+    :root {
+        height: 100dvh;
+        width: 100dvw;
+    }
 }
 
 @media (min-width: 700px) {
